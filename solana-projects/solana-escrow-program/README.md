@@ -16,9 +16,9 @@ This diagram shows the relationship between the program's accounts (PDAs) and us
     │--------------------------│
     │ id: u64                  │
     │ maker: Pubkey            │
-    │ token_mint_a: Pubkey      │
-    │ token_mint_b: Pubkey      │
-    │ token_amount_b: u64       │
+    │ token_mint_a: Pubkey     │
+    │ token_mint_b: Pubkey     │
+    │ token_amount_b: u64      │
     │ bump: u8                 │
     └─────────┬────────────────┘
               │
