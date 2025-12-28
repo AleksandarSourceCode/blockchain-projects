@@ -21,7 +21,7 @@ The portfolio primarily focuses on **Solana-based projects**, with future plans 
 | Project Name                                                             | Platform | Status  |
 | ------------------------------------------------------------------------ | -------- | ------- |
 | [solana-config-program](solana-projects/solana-config-program/README.md) | Solana   | Active  |
-| solana-escrow-program                                                    | Solana   | Active  |
+| [solana-escrow-program](solana-projects/solana-escrow-program/README.md) | Solana   | Active  |
 | ethereum-example                                                         | Ethereum | Planned |
 
 ---
@@ -67,7 +67,7 @@ Make sure the following tools are installed:
 - **Solana CLI**
 - **Anchor CLI**
 
-> Specific project versions and additional dependencies are detailed in each project's README.
+Specific project versions and additional dependencies are detailed in each project's README.
 
 ---
 
