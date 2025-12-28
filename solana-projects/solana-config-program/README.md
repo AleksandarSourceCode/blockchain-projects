@@ -99,8 +99,8 @@ anchor test
 The following versions were used for the `solana-config-program` project:
 
 - **Git:** 2.43.0
-- **Rust:** 1.89.0
-- **Cargo:** 1.89.0
+- **Rust:** 1.91.1
+- **Cargo:** 1.91.1
 - **Node.js:** 24.10.0
 - **npm:** 11.6.1
 - **Yarn:** 1.22.22
