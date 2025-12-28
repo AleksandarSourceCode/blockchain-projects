@@ -11,23 +11,23 @@ The program allows a maker to create an offer by locking tokens into a vault, an
 
 This diagram shows the relationship between the program's accounts (PDAs) and users:
 
-┌───────────────────────┐
-│ Offer (PDA) │
-│-----------------------│
-│ id: u64 │
-│ maker: Pubkey │
-│ token_mint_a: Pubkey │
-│ token_mint_b: Pubkey │
-│ token_amount_b: u64 │
-│ bump: u8 │
-└─────────┬─────────────┘
-│
-Holds offered tokens in vault
-│
-┌─────────▼─────────────┐
-│ Vault ATA │
-│ (TokenAccount for A) │
-└───────────────────────┘
+    ┌──────────────────────────┐
+    │       Offer (PDA)        │
+    │--------------------------│
+    │ id: u64                  │
+    │ maker: Pubkey            │
+    │ token_mint_a: Pubkey      │
+    │ token_mint_b: Pubkey      │
+    │ token_amount_b: u64       │
+    │ bump: u8                 │
+    └─────────┬────────────────┘
+              │
+    holds offered tokens in vault
+              │
+    ┌─────────▼──────────────┐
+    │       Vault ATA        │
+    │ (TokenAccount for A)   │
+    └────────────────────────┘
 
 ---
 
