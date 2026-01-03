@@ -26,7 +26,7 @@ describe("token2022 / auto / full flow", () => {
   const metadataArgs = {
     name: "Happy Dog Token",
     symbol: "HAPPYDOG",
-    uri: "https://raw.githubusercontent.com/AleksandarSourceCode/dev-assets/refs/heads/main/json/happy-dog.json",
+    uri: "https://raw.githubusercontent.com/AleksandarSourceCode/dev-assets/refs/heads/main/json/dog/happy-dog.json",
   };
 
   const mint = anchor.web3.Keypair.generate();

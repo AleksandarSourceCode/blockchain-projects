@@ -1,5 +1,5 @@
 use {
-    crate::constants::SEED_METADATA,
+    crate::constants::METADATA_SEED,
     anchor_lang::prelude::*,
     anchor_spl::{
         metadata::{
@@ -21,7 +21,7 @@ pub struct UpdateMetadataSpl<'info> {
     /// CHECK: Metaplex metadata PDA derived from mint
     #[account(
         mut,
-        seeds = [SEED_METADATA, token_metadata_program.key().as_ref(), token_mint.key().as_ref()],
+        seeds = [METADATA_SEED, token_metadata_program.key().as_ref(), token_mint.key().as_ref()],
         bump,
         seeds::program = token_metadata_program.key(),
     )]

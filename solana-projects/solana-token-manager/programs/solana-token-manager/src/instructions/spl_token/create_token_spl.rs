@@ -9,7 +9,7 @@ use {
     },
 };
 
-use crate::constants::SEED_METADATA;
+use crate::constants::METADATA_SEED;
 use crate::types::metadata_args::*;
 
 #[derive(Accounts)]
@@ -21,7 +21,7 @@ pub struct CreateTokenSpl<'info> {
     /// CHECK: Validate address by deriving pda
     #[account(
         mut,
-        seeds = [SEED_METADATA, token_metadata_program.key().as_ref(), token_mint.key().as_ref()],
+        seeds = [METADATA_SEED, token_metadata_program.key().as_ref(), token_mint.key().as_ref()],
         bump,
         seeds::program = token_metadata_program.key(),
     )]
