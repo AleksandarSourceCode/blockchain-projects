@@ -1,0 +1,24 @@
+# Anchor / Rust
+/target
+**/target
+.anchor
+/idl
+/tests/temp*
+
+# Node / JS
+node_modules
+.yarn
+package-lock.json
+yarn.lock
+
+# Local ledger
+test-ledger
+
+# VSCode / IDE
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Backup files
+**/*.rs.bk

@@ -22,6 +22,7 @@ The portfolio primarily focuses on **Solana-based projects**, with future plans 
 | ------------------------------------------------------------------------ | -------- | ------- |
 | [solana-config-program](solana-projects/solana-config-program/README.md) | Solana   | Active  |
 | [solana-escrow-program](solana-projects/solana-escrow-program/README.md) | Solana   | Active  |
+| [solana-token-manager](solana-projects/solana-token-manager/README.md)   | Solana   | Active  |
 | ethereum-example                                                         | Ethereum | Planned |
 
 ---
