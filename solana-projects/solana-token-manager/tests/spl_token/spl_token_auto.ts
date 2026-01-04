@@ -30,7 +30,7 @@ describe("spl / auto / full flow", () => {
   const metadataArgs = {
     name: "Happy Dog Token",
     symbol: "HAPPYDOG",
-    uri: "https://raw.githubusercontent.com/AleksandarSourceCode/dev-assets/refs/heads/main/json/dog/happy-dog.json",
+    uri: "https://raw.githubusercontent.com/AleksandarSourceCode/dev-assets/refs/heads/main/json/tokens/dog/happy-dog.json",
   };
 
   const mint = anchor.web3.Keypair.generate();
@@ -42,14 +42,13 @@ describe("spl / auto / full flow", () => {
   let transferRecipientAta: PublicKey;
 
   before("setup", async () => {
-    await connection.requestAirdrop(
-      mintRecipient.publicKey,
-      2 * anchor.web3.LAMPORTS_PER_SOL
+    const sig = await connection.requestAirdrop(
+        mintRecipient.publicKey,
+        2 * anchor.web3.LAMPORTS_PER_SOL
     );
-    await connection.requestAirdrop(
-      transferRecipient.publicKey,
-      2 * anchor.web3.LAMPORTS_PER_SOL
-    );
+    
+    const blockhash  = await connection.getLatestBlockhash();
+    await connection.confirmTransaction({ signature: sig, ...blockhash }, "confirmed");
 
     [metadataPda] = PublicKey.findProgramAddressSync(
       [

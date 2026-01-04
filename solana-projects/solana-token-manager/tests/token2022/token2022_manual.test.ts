@@ -26,7 +26,7 @@ describe("token2022 / manual", () => {
   const metadataArgs = {
     name: "Happy Dog Token",
     symbol: "HAPPYDOG",
-    uri: "https://raw.githubusercontent.com/AleksandarSourceCode/dev-assets/refs/heads/main/json/dog/happy-dog.json",
+    uri: "https://raw.githubusercontent.com/AleksandarSourceCode/dev-assets/refs/heads/main/json/tokens/dog/happy-dog.json",
   };
 
   const mint = anchor.web3.Keypair.generate();
@@ -34,10 +34,13 @@ describe("token2022 / manual", () => {
   const transferRecipient = anchor.web3.Keypair.generate();
 
   before("setup accounts", async () => {
-    await connection.requestAirdrop(
+    const sig = await connection.requestAirdrop(
       mintRecipient.publicKey,
       2 * anchor.web3.LAMPORTS_PER_SOL
     );
+
+    const blockhash  = await connection.getLatestBlockhash();
+    await connection.confirmTransaction({ signature: sig, ...blockhash }, "confirmed");
   });
 
   it("create Token-2022 mint with embedded metadata", async () => {

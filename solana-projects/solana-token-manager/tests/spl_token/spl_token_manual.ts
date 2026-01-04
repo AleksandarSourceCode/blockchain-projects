@@ -26,7 +26,7 @@ describe("spl / manual", () => {
   const metadataArgs = {
     name: "Happy Dog Token",
     symbol: "HAPPYDOG",
-    uri: "https://raw.githubusercontent.com/AleksandarSourceCode/dev-assets/refs/heads/main/json/dog/happy-dog.json",
+    uri: "https://raw.githubusercontent.com/AleksandarSourceCode/dev-assets/refs/heads/main/json/tokens/dog/happy-dog.json",
   };
 
   const mint = anchor.web3.Keypair.generate();
@@ -36,11 +36,14 @@ describe("spl / manual", () => {
   let metadataPda: PublicKey;
 
   before("setup accounts", async () => {
-    // Fund recipient wallet
-    await connection.requestAirdrop(
+    // Fund mintRecipient wallet
+    const sig = await connection.requestAirdrop(
       mintRecipient.publicKey,
       2 * anchor.web3.LAMPORTS_PER_SOL
     );
+
+    const blockhash  = await connection.getLatestBlockhash();
+    await connection.confirmTransaction({ signature: sig, ...blockhash }, "confirmed");
 
     // Derive Metaplex metadata PDA
     [metadataPda] = PublicKey.findProgramAddressSync(
