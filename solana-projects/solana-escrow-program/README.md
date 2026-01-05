@@ -84,9 +84,6 @@ Automated tests are included for both `make_offer` and `take_offer` instructions
 # Build the program
 anchor build
 
-# Deploy to localnet / devnet
-anchor deploy
-
 # Run tests
 anchor test
 ```

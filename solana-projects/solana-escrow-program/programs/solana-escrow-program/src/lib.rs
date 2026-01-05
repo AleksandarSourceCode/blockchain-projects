@@ -26,7 +26,9 @@ pub mod solana_escrow_program {
     }
 
     /// Accepts an existing escrow offer.
-    /// Transfers tokens between maker and taker and closes the vault.
+    /// Transfers tokens between the maker and taker,
+    /// releases the vault funds to the taker,
+    /// and closes the offer and vault accounts.
     pub fn take_offer(ctx: Context<TakeOffer>) -> Result<()> {
         instructions::take_offer(ctx)
     }

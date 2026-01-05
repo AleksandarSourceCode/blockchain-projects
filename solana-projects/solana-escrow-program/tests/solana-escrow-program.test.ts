@@ -211,7 +211,7 @@ describe("solana-escrow-program", () => {
  *
  * This function iterates over a list of accounts, retrieves their on-chain balance using
  * `getAccount`, and returns an array of objects containing the account name, address, and balance.
- * If an account does not exist yet, it defaults the balance to "0".
+ * If an account does not exist yet, it defaults the balance to 'not initialized'.
  *
  * @param connection - The Solana connection object used to query the blockchain.
  * @param accounts - An array of objects containing a human-readable name and the PublicKey of each token account.

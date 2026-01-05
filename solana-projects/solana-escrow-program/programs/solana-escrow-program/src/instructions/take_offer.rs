@@ -30,7 +30,7 @@ pub struct TakeOffer<'info> {
         seeds = [OFFER_SEED, maker.key().as_ref(), offer.id.to_le_bytes().as_ref()],
         bump = offer.bump
     )]
-    pub offer: Account<'info, Offer>, // PDA storing the offer details
+    pub offer: Account<'info, Offer>, // Escrow offer PDA storing offer details
 
     #[account(
         mut,
