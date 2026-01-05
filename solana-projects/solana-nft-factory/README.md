@@ -72,8 +72,9 @@ A **standalone NFT** does NOT belong to any collection.
 
 ## Collection NFT Flow
 
-A **collection NFT** consists of two parts: 1. **Collection NFT**
-(parent) 2. **NFT items** that belong to the collection
+A **collection NFT** consists of two parts: 
+1. **Collection NFT** (parent) 
+2. **NFT items** that belong to the collection
 
 ------------------------------------------------------------------------
 
@@ -163,19 +164,22 @@ Only the **collection authority** can verify NFTs.
 
 ## Summary
 
-  Feature                Standalone NFT   Collection NFT
-  ---------------------- ---------------- ----------------
-  Collection metadata    ❌               ✅
-  Master Edition         ✅               ✅
-  Verification step      ❌               ✅
-  Marketplace grouping   ❌               ✅
+```
+Feature                Standalone NFT   Collection NFT
+---------------------- ---------------- ----------------
+Collection metadata    ❌               ✅
+Master Edition         ✅               ✅
+Verification step      ❌               ✅
+Marketplace grouping   ❌               ✅
+```
 
 ------------------------------------------------------------------------
 
 ## Purpose of This Project
 
-This project exists to: - clearly demonstrate NFT creation flows - serve
-as a reference for future projects - avoid common Metaplex and Anchor
-mistakes
+This project exists to: 
+- clearly demonstrate NFT creation flows 
+- serve as a reference for future projects 
+- avoid common Metaplex and Anchor mistakes
 
 ------------------------------------------------------------------------
