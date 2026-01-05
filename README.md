@@ -7,6 +7,8 @@
 This repository serves as a **professional portfolio** of my blockchain development work. It is designed as a **monorepo** to provide an organized overview of all projects, including programs, tests, and documentation.  
 The portfolio primarily focuses on **Solana-based projects**, with future plans for Ethereum and other EVM-compatible platforms.
 
+> This repository is intended for educational and portfolio purposes.
+
 ---
 
 ## Project Structure
@@ -23,6 +25,7 @@ The portfolio primarily focuses on **Solana-based projects**, with future plans 
 | [solana-config-program](solana-projects/solana-config-program/README.md) | Solana   | Active  |
 | [solana-escrow-program](solana-projects/solana-escrow-program/README.md) | Solana   | Active  |
 | [solana-token-manager](solana-projects/solana-token-manager/README.md)   | Solana   | Active  |
+| [solana-nft-factory](solana-projects/solana-nft-factory/README.md)       | Solana   | Active  |
 | ethereum-example                                                         | Ethereum | Planned |
 
 ---
@@ -74,6 +77,7 @@ Specific project versions and additional dependencies are detailed in each proje
 
 ## Contributing
 
-Contributions are welcome! Open issues or pull requests for improvements, new projects, or bug fixes.
+This repository is primarily a personal portfolio, but suggestions
+and improvements are welcome via issues or pull requests.
 
 ---
