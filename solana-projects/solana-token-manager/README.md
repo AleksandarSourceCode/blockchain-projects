@@ -1,8 +1,22 @@
 # Solana Token Manager
 
-A production-ready **Solana program built with Anchor** that provides a unified interface for managing **SPL tokens** and **Token-2022 tokens**, including mint creation, authority management, metadata updates, and common token operations.
+**Solana Token Manager** is an **Anchor-based Solana program** designed to **explore, compare, and demonstrate the practical differences between SPL Token and Token-2022 standards**.
 
-This project demonstrates **clean program architecture**, **safe CPI usage**, and **practical handling of both legacy SPL tokens and Token-2022 extensions**.
+The primary goal of this project is **educational and architectural**: to clearly show how instructions, authorities, metadata handling, and token behavior differ between the two standards, while maintaining **clean, production-grade program structure**.
+
+---
+
+## 🎯 Project Goal
+
+This program was written to:
+
+- Understand **instruction-level differences** between SPL Token and Token-2022
+- Compare **authority models** and edge cases
+- Explore **metadata handling** (Metaplex vs Metadata Pointer)
+- Demonstrate **clean separation of token logic**
+- Serve as a **reference implementation** for real-world Solana token programs
+
+While the code follows production-quality patterns, the project is intentionally focused on **clarity, correctness, and learning**, rather than being a turnkey on-chain product.
 
 ---
 
@@ -18,7 +32,7 @@ This project demonstrates **clean program architecture**, **safe CPI usage**, an
 - Mint tokens (human-readable amounts)
 - Transfer tokens
 - Burn tokens
-- Manage mint and account authorities
+- Manage mint- and account-level authorities
 - Unified token operations via `token_interface`
 
 ---
@@ -26,19 +40,21 @@ This project demonstrates **clean program architecture**, **safe CPI usage**, an
 ## 🧠 Design Principles
 
 - **Human-readable token amounts**  
-  All mint, transfer, and burn instructions accept amounts in user-friendly units and internally scale using mint decimals.
+  All mint, transfer, and burn instructions accept user-friendly values and internally scale using mint decimals.
 
 - **Explicit authority handling**  
-  Authority changes are type-safe and validated at runtime.
+  Authority changes are type-safe, validated, and intentionally verbose to highlight behavioral differences.
 
-- **No persistent program state**  
-  The program does not store custom on-chain accounts; it operates directly on token and metadata accounts.
+- **No persistent custom program state**  
+  The program operates directly on token and metadata accounts without introducing additional PDAs.
 
 - **Clear separation of concerns**
-  - SPL logic
+  - SPL Token logic
   - Token-2022 logic
   - Universal token operations
-  - Shared data types
+  - Shared data types and enums
+
+This structure makes the differences between token standards easy to trace and reason about.
 
 ---
 
@@ -56,10 +72,10 @@ src/
 └── lib.rs
 ```
 
-- **`instructions/`** – All on-chain instruction handlers  
-- **`types/`** – Serializable enums and argument structs (IDL-friendly)  
-- **`universal/`** – Token operations shared by SPL and Token-2022  
-- **`errors.rs`** – Custom program errors  
+- **`instructions/`** – On-chain instruction handlers
+- **`types/`** – Serializable enums and argument structs (IDL-friendly)
+- **`universal/`** – Shared token operations for SPL and Token-2022
+- **`errors.rs`** – Custom program errors
 
 ---
 
@@ -67,26 +83,27 @@ src/
 
 This project uses **Anchor + ts-mocha** with a local validator.
 
-### Test Philosophy
+### Testing Philosophy
 
 - Tests intentionally run **against a shared validator state**
 - Token mints and metadata are created once and reused
-- This allows:
+- This enables:
   - Easier debugging
-  - Explorer verification
-  - Realistic authority and metadata flows
+  - Explorer-based inspection
+  - Realistic authority and metadata workflows
 
 ### Test Types
 
-- **Automatic tests**
-  - Assert balances, authorities, and account state
-  - Suitable for regression testing
+- **Automated tests**
+  - Balance checks
+  - Authority validation
+  - Account state assertions
 
 - **Manual / Explorer tests**
-  - Print transaction signatures
-  - Allow inspection in Solana Explorer
+  - Transaction signatures are printed
+  - Instructions can be inspected in Solana Explorer
 
-Test files are controlled by naming (`*.test.ts`) and executed via Anchor.
+Test files are controlled by naming (*.test.ts) and executed via Anchor.
 
 ---
 
@@ -96,7 +113,7 @@ Test files are controlled by naming (`*.test.ts`) and executed via Anchor.
 anchor test
 ```
 
-The validator is configured in `Anchor.toml` to:
+`Anchor.toml` is configured to:
 - Use a persistent test ledger
 - Clone the Metaplex Metadata program
 - Avoid unnecessary redeployments
@@ -117,20 +134,22 @@ Supported authority operations include:
 - Token account owner
 - Close account
 
-Authority instructions validate whether a **mint or token account** is required based on the authority type.
+Authority instructions validate whether a mint or token account is required based on the authority type.
 
 ---
 
 ## 🧾 Metadata Support
 
 ### SPL Token
-- Uses Metaplex Metadata program
+- Uses the Metaplex Metadata program
 - PDA-derived metadata accounts
 
 ### Token-2022
 - Uses the metadata pointer extension
 - Metadata stored directly in the mint account
 - Automatic rent recalculation when metadata grows
+
+This contrast is a key focus of the project.
 
 ---
 
@@ -147,11 +166,11 @@ Authority instructions validate whether a **mint or token account** is required 
 
 ## 🎯 Use Cases
 
-- Token factories
-- Admin-controlled token systems
-- Metadata-rich tokens
 - Learning reference for SPL vs Token-2022 differences
+- Token factories and admin-controlled tokens
+- Metadata-rich token experiments
 - Portfolio demonstration of real-world Solana development
+- Base for future production token systems
 
 ---
 
@@ -159,22 +178,21 @@ Authority instructions validate whether a **mint or token account** is required 
 
 The following versions were used during development and testing:
 
-- **Node.js:** v24.10.0
-- **npm:** v11.6.1
-- **Yarn:** v1.22.22
+- **Node.js:** v24.10.0  
+- **npm:** v11.6.1  
+- **Yarn:** v1.22.22  
 
-- **Rust:** v1.92.0
-- **Cargo:** v1.92.0
+- **Rust:** v1.92.0  
+- **Cargo:** v1.92.0  
 
-- **Solana CLI:** v2.3.13
-- **Anchor CLI:** v0.32.1
+- **Solana CLI:** v2.3.13  
+- **Anchor CLI:** v0.32.1  
 
 ---
 
 ## 📌 Notes
 
-- This project focuses on **correctness, clarity, and maintainability**
-- Designed for **educational and production reference**
+- This project prioritizes **clarity over abstraction**
+- Designed as both an **educational reference** and a **production-quality codebase**
 - No off-chain dependencies beyond metadata URIs
 
----
