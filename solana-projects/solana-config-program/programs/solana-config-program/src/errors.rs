@@ -2,9 +2,7 @@ use anchor_lang::prelude::*;
 
 #[error_code]
 pub enum ConfigError {
-    #[msg("Unauthorized")]
-    Unauthorized,
-
+    /// Program is currently frozen
     #[msg("Program is frozen")]
     ProgramFrozen,
 }

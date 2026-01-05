@@ -58,7 +58,7 @@ This diagram shows the relationship between the program's accounts (PDAs) and us
 - **Access Control**: Only admin can perform privileged operations.
 - **Status Validation**: Instructions cannot run if the global configuration is `Frozen`.
 - **Logging**: Uses `msg!` for clear debug and transaction logs.
-- **Clean Architecture**: Separation of admin and user instructions, constants, state, and errors. Follows **SOLID principles**.
+- **Clean Architecture**: Separation of admin and user instructions, constants, state, and errors.
 
 ---
 
@@ -84,9 +84,6 @@ This project includes automated tests for program instructions.
 ```bash
 # Build the program
 anchor build
-
-# Deploy to localnet / devnet
-anchor deploy
 
 # Run tests
 anchor test

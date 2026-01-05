@@ -9,6 +9,7 @@ pub struct GlobalConfig {
     pub status: Status,
     /// Fee in basis points (100 = 1%)
     pub fee_bps: u16,
+    /// PDA bump seed
     pub bump: u8,
 }
 

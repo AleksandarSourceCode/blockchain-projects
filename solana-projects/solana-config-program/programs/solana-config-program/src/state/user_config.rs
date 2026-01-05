@@ -9,5 +9,6 @@ pub struct UserConfig {
     pub daily_limit: u64,
     /// Whether the user is enabled to perform operations
     pub enabled: bool,
+    /// PDA bump seed
     pub bump: u8,
 }

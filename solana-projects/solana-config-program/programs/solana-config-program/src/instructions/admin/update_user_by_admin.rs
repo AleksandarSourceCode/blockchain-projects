@@ -12,7 +12,7 @@ pub struct UpdateUserByAdmin<'info> {
     #[account(
         has_one = admin,
         seeds = [GLOBAL_CONFIG_SEED],
-        bump
+        bump = global_config.bump
     )]
     pub global_config: Account<'info, GlobalConfig>,
 
