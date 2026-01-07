@@ -1,9 +1,13 @@
 # Solana Escrow Program
 
-A Solana program built with **Anchor** for creating and accepting token swap offers between users.  
-This project demonstrates **deterministic PDAs, secure token transfers, and safe escrow management** on Solana.
+A Solana program built with **Anchor** that demonstrates a simple, atomic
+token swap between two users using a vault controlled by a Program Derived Address (PDA).
 
-The program allows a maker to create an offer by locking tokens into a vault, and a taker to accept the offer, exchanging tokens atomically. All account states are managed securely via **Anchor PDAs and the SPL token program**.
+The program allows a maker to create an offer by locking tokens into a vault,
+and a taker to accept the offer, exchanging tokens in a single transaction.
+Token custody is enforced via PDA-based authority and the **SPL Token interface
+(compatible with both legacy SPL Token and Token-2022 programs)**,
+without maintaining complex on-chain escrow state.
 
 ---
 
@@ -33,10 +37,16 @@ This diagram shows the relationship between the program's accounts (PDAs) and us
 
 ### **Notes**
 
-- Each **Offer** is a PDA derived from `[OFFER_SEED, maker.key(), offer_id]`.
-- Maker initializes the offer by locking Token A into a vault.
-- Taker accepts the offer by transferring Token B to maker and receiving Token A.
-- After completion, the vault is closed and SOL rent goes to the taker.
+- Each **Offer** is represented by a PDA derived from  
+  `[OFFER_SEED, maker.key(), offer_id]`.
+- The maker initializes an offer by locking Token A into a vault
+  (an associated token account owned by the offer PDA).
+- The taker accepts the offer by atomically:
+  - transferring Token B to the maker
+  - receiving Token A from the vault
+- After successful execution:
+  - the **vault token account is closed** and its SOL rent is returned to the taker
+  - the **offer PDA account is closed** and its SOL rent is returned to the maker
 
 ---
 
@@ -51,20 +61,24 @@ This diagram shows the relationship between the program's accounts (PDAs) and us
 
 ## **Features**
 
-- **Deterministic PDAs**: Each offer uses a predictable PDA address derived from maker and offer ID.
-- **Atomic Token Swap**: Uses SPL `transfer_checked` CPI calls to ensure safe token transfers.
-- **Vault Management**: Tokens are held in a PDA vault until the offer is accepted.
-- **Error Handling**: Validates token amounts before transfers (`InvalidAmountA`, `InvalidAmountB`).
-- **Clean Architecture**: Instructions, state, constants, and errors are separated following **Anchor best practices**.
+- **Deterministic PDAs**: Each offer is represented by a predictable PDA derived from
+  `[OFFER_SEED, maker.key(), offer_id]`, ensuring uniqueness and determinism.
+- **Atomic Token Swap**: Uses CPI calls to the SPL Token / Token-2022 program to perform
+  an all-or-nothing token exchange between maker and taker.
+- **Vault Management**: Offered tokens are locked in a vault (ATA owned by the offer PDA)
+  until the offer is either accepted or closed.
+- **Input Validation & Errors**: Token amounts and account relationships are validated
+  before transfers, with explicit custom errors (e.g. `InvalidAmountA`, `InvalidAmountB`).
+- **Clean Architecture**: Instructions, state, constants, and errors are cleanly separated,
+  following Anchor best practices for readability and maintainability.
 
 ---
 
 ## **Usage**
 
-1. Deploy the program on Solana using **Anchor**.
-2. Maker creates an offer via `make_offer`.
-3. Taker accepts an offer via `take_offer`.
-4. Token swaps are executed atomically; vault is closed automatically after completion.
+1. Maker creates an offer and locks tokens.
+2. Taker accepts the offer and tokens are swapped atomically.
+3. Vault and offer accounts are closed after completion.
 
 ---
 
@@ -78,7 +92,7 @@ Automated tests are included for both `make_offer` and `take_offer` instructions
 
 ---
 
-## **Getting Started (Optional)**
+## **Getting Started**
 
 ```bash
 # Build the program

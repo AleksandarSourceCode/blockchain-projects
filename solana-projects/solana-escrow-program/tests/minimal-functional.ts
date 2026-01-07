@@ -5,16 +5,21 @@ import { Keypair, LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import {
   getAccount,
   getAssociatedTokenAddressSync,
+  TOKEN_PROGRAM_ID,
   TOKEN_2022_PROGRAM_ID,
 } from "@solana/spl-token";
 import { createAccountsMintsAndTokenAccounts } from "@solana-developers/helpers";
 import * as assert from "assert";
 
-const TOKEN_PROGRAM = TOKEN_2022_PROGRAM_ID;
+import { confirmTx } from "./helpers";
+
+const TOKEN_PROGRAM: typeof TOKEN_2022_PROGRAM_ID | typeof TOKEN_PROGRAM_ID =
+  TOKEN_2022_PROGRAM_ID;
 
 describe("minimal solana-escrow-program test", () => {
   const provider = anchor.AnchorProvider.env();
   const connection = provider.connection;
+  anchor.setProvider(provider);
   const program = anchor.workspace
     .solanaEscrowProgram as Program<SolanaEscrowProgram>;
   const payer = provider.wallet.payer;
@@ -73,7 +78,7 @@ describe("minimal solana-escrow-program test", () => {
   });
 
   it("should create offer and lock tokens in vault", async () => {
-    await program.methods
+    const tx = await program.methods
       .makeOffer(offerId, tokenAmountA, tokenAmountB)
       .accounts({
         maker: maker.publicKey,
@@ -83,6 +88,9 @@ describe("minimal solana-escrow-program test", () => {
       })
       .signers([maker])
       .rpc();
+    
+    // Ensure the transaction is fully confirmed before reading on-chain state
+    await confirmTx(connection, tx);
 
     const vaultAccount = await getAccount(
       connection,
@@ -110,7 +118,7 @@ describe("minimal solana-escrow-program test", () => {
   });
 
   it("should accept offer and transfer tokens correctly", async () => {
-    await program.methods
+    const tx = await program.methods
       .takeOffer()
       .accounts({
         taker: taker.publicKey,
@@ -120,6 +128,9 @@ describe("minimal solana-escrow-program test", () => {
       })
       .signers([taker])
       .rpc();
+
+    // Ensure the transaction is fully confirmed before reading on-chain state
+    await confirmTx(connection, tx);
 
     const makerAccountB = await getAccount(
       connection,

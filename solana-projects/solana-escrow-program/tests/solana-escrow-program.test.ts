@@ -3,29 +3,20 @@ import { Program } from "@coral-xyz/anchor";
 import { SolanaEscrowProgram } from "../target/types/solana_escrow_program";
 import { Keypair, LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import {
-  getAccount,
   getAssociatedTokenAddressSync,
   TOKEN_2022_PROGRAM_ID,
   TOKEN_PROGRAM_ID,
 } from "@solana/spl-token";
 import { createAccountsMintsAndTokenAccounts } from "@solana-developers/helpers";
 
-// Use TOKEN_2022_PROGRAM_ID for SPL token operations. Can be switched to TOKEN_PROGRAM_ID if needed.
+import { confirmTx, TokenAccountSnapshot, fetchTokenAccountsSnapshot } from "./helpers";
+
+// Use the Token-2022 program by default. Can be switched to the classic SPL Token program if needed.
 const TOKEN_PROGRAM: typeof TOKEN_2022_PROGRAM_ID | typeof TOKEN_PROGRAM_ID =
   TOKEN_2022_PROGRAM_ID;
 
 // Debug flag to enable or disable logging of token account snapshots and other test information.
 const DEBUG = true;
-
-// Structure representing the state of a token account for snapshot purposes.
-// - name: a human-readable identifier for the account
-// - address: the PublicKey of the token account as a base58 string
-// - balance: current token balance as a string
-type TokenAccountSnapshot = {
-  name: string;
-  address: string;
-  balance: string;
-};
 
 // Array to store token account snapshots collected during tests.
 // Populated during before/after hooks or helper functions for inspection/debugging.
@@ -37,6 +28,9 @@ describe("solana-escrow-program", () => {
 
   // Connection object to communicate with the Solana network
   const connection = provider.connection;
+
+  // Configures Anchor to use this provider for all program RPC calls and account interactions
+  anchor.setProvider(provider);
 
   // Program instance for the deployed Solana Escrow program
   const program = anchor.workspace
@@ -152,10 +146,12 @@ describe("solana-escrow-program", () => {
         maker: maker.publicKey, // Maker account initiating the offer
         tokenMintA: tokeMintA.publicKey, // Mint of the token being offered
         tokenMintB: tokenMintB.publicKey, // Mint of the token expected in return
-        tokenProgram: TOKEN_PROGRAM, // SPL Token program
+        tokenProgram: TOKEN_PROGRAM, // Token program
       })
       .signers([maker]) // Signer for the transaction
       .rpc();
+
+    await confirmTx(connection, tx);
 
     // Debug log: display the transaction signature
     if (DEBUG) {
@@ -170,10 +166,13 @@ describe("solana-escrow-program", () => {
         taker: taker.publicKey, // Taker account accepting the offer
         /// @ts-ignore
         offer: offerPDA, // PDA of the existing offer account
-        tokenProgram: TOKEN_PROGRAM, // SPL Token program
+        tokenProgram: TOKEN_PROGRAM, // Token program
       })
       .signers([taker]) // Signer for the taker transaction
       .rpc();
+    
+    // Ensure the transaction is fully confirmed before reading on-chain state
+    await confirmTx(connection, tx);
 
     // Optional debug log: display the transaction signature
     if (DEBUG) {
@@ -206,46 +205,4 @@ describe("solana-escrow-program", () => {
   });
 });
 
-/**
- * Fetches the current state of multiple SPL token accounts and returns a structured snapshot.
- *
- * This function iterates over a list of accounts, retrieves their on-chain balance using
- * `getAccount`, and returns an array of objects containing the account name, address, and balance.
- * If an account does not exist yet, it defaults the balance to 'not initialized'.
- *
- * @param connection - The Solana connection object used to query the blockchain.
- * @param accounts - An array of objects containing a human-readable name and the PublicKey of each token account.
- * @param tokenProgram - The SPL token program ID (either TOKEN_PROGRAM_ID or TOKEN_2022_PROGRAM_ID) to use for fetching account data.
- * @returns A Promise that resolves to an array of snapshots, each representing the current state of a token account.
- */
 
-async function fetchTokenAccountsSnapshot(
-  connection: anchor.web3.Connection,
-  accounts: { name: string; pubkey: PublicKey }[],
-  tokenProgram: typeof TOKEN_PROGRAM_ID | typeof TOKEN_2022_PROGRAM_ID
-): Promise<TokenAccountSnapshot[]> {
-  return await Promise.all(
-    accounts.map(async ({ name, pubkey }) => {
-      try {
-        const acc = await getAccount(
-          connection,
-          pubkey,
-          undefined,
-          tokenProgram
-        );
-        return {
-          name,
-          address: pubkey.toBase58(),
-          balance: acc.amount.toString(),
-        };
-      } catch {
-        // if the account doesn't exist
-        return {
-          name,
-          address: pubkey.toBase58(),
-          balance: "not initialized",
-        };
-      }
-    })
-  );
-}
