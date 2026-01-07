@@ -27,6 +27,7 @@ The portfolio primarily focuses on **Solana-based projects**, with future plans 
 | [solana-token-manager](solana-projects/solana-token-manager/README.md)   | Solana   | Active  |
 | [solana-nft-factory](solana-projects/solana-nft-factory/README.md)       | Solana   | Active  |
 | [solana-log-lab](solana-projects/solana-log-lab/README.md)               | Solana   | Active  |
+| [solana-price-oracle](solana-projects/solana-price-oracle/README.md)     | Solana   | Active  |
 | ethereum-example                                                         | Ethereum | Planned |
 
 ---
@@ -35,9 +36,10 @@ The portfolio primarily focuses on **Solana-based projects**, with future plans 
 
 Each project inside the folders is self-contained with its own:
 
-- `src/` or `programs/` – The core smart contract logic.
+- `src/` or `programs/` – Core on-chain program logic.
 - `tests/` – Integration and unit tests.
-- `.gitignore` – Project-specific ignore rules (e.g., ignoring `target/` folders).
+- `README.md` – Project-specific documentation.
+- `.gitignore` – Project-level ignore rules (e.g., build artifacts, local ledgers).
 
 ---
 
