@@ -26,6 +26,7 @@ The portfolio primarily focuses on **Solana-based projects**, with future plans 
 | [solana-escrow-program](solana-projects/solana-escrow-program/README.md) | Solana   | Active  |
 | [solana-token-manager](solana-projects/solana-token-manager/README.md)   | Solana   | Active  |
 | [solana-nft-factory](solana-projects/solana-nft-factory/README.md)       | Solana   | Active  |
+| [solana-log-lab](solana-projects/solana-log-lab/README.md)               | Solana   | Active  |
 | ethereum-example                                                         | Ethereum | Planned |
 
 ---
