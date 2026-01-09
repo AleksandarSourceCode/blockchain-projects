@@ -1,7 +1,7 @@
 # Solana Wallet Analyzer
 
 **Solana Wallet Analyzer** is a lightweight **educational / portfolio tool** for analyzing a Solana wallet using on-chain data and public APIs.  
-It demonstrates how to scan token accounts, resolve metadata, fetch prices, analyze NFTs, and summarize wallet activity.
+It demonstrates how to scan token accounts, resolve metadata, analyze NFTs, fetch prices, retrieve wallet transactions, and summarize wallet activity.
 
 > This project is intended for educational and portfolio purposes.
 
@@ -13,11 +13,11 @@ The analyzer performs a step-by-step wallet analysis pipeline:
 
 - Scans SPL and Token-2022 token accounts
 - Enriches tokens with on-chain metadata
-- Fetches USD prices using Birdeye
 - Detects NFTs using simple heuristics
-- Builds a wallet summary (balances and counts)
+- Fetches USD prices using Birdeye
 - Fetches indexed transactions via Helius
 - Summarizes incoming and outgoing SOL flow
+- Builds a wallet summary (balances and counts)
 
 The project focuses on **clarity, correctness, and structure**, not on building a production service.
 
@@ -26,7 +26,7 @@ The project focuses on **clarity, correctness, and structure**, not on building 
 ## High-Level Flow
 
 ```
-Scan → Enrich → Filter → Price → NFT → Summary → SOL Flow
+Scan → Enrich → NFT → Price (Birdeye) → Transactions (Helius) → SOL Flow → Summary
 ```
 
 Each step produces structured JSON output that can be inspected or reused.

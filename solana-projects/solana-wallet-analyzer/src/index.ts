@@ -58,25 +58,6 @@ writeJson(
 );
 
 /* =========================
- * PRICES
- * ========================= */
-
-const pricedTokens = await runFetchBirdeyePricesUsd(
-  tokens,
-  "outputs/tokens.prices.usd.json",
-  10
-);
-
-const expensiveTokens = filterTokenPrices(pricedTokens, {
-  minPriceUsd: 100,
-});
-
-writeJson(
-  "outputs/tokens.expensive.json",
-  expensiveTokens
-);
-
-/* =========================
  * NFTS
  * ========================= */
 
@@ -87,14 +68,26 @@ await runNftScanFromList(
 );
 
 /* =========================
- * WALLET SUMMARY
+ * PRICES
  * ========================= */
 
-await runWalletSummary(
-  connection,
-  walletPublicKey,
+const pricedTokens = await runFetchBirdeyePricesUsd(
   tokens,
-  "outputs/wallet.summary.json"
+  "outputs/tokens.prices.usd.json",
+  10
+);
+
+/* =========================
+ * FILTERING
+ * ========================= */
+
+const expensiveTokens = filterTokenPrices(pricedTokens, {
+  minPriceUsd: 100,
+});
+
+writeJson(
+  "outputs/tokens.expensive.json",
+  expensiveTokens
 );
 
 /* =========================
@@ -111,4 +104,15 @@ await runSummarizeSolFlow(
   WALLET_ADDRESS,
   indexedTransactions,
   "outputs/sol.flow.summary.json"
+);
+
+/* =========================
+ * WALLET SUMMARY
+ * ========================= */
+
+await runWalletSummary(
+  connection,
+  walletPublicKey,
+  tokens,
+  "outputs/wallet.summary.json"
 );

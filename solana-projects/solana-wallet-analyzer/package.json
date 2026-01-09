@@ -5,8 +5,9 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
+    "clean": "rm -rf dist",
     "build": "tsc",
-    "start": "node dist/index.js",
+    "start": "npm run build && node dist/index.js",
     "dev": "node --loader ts-node/esm src/index.ts"
   },
   "dependencies": {
