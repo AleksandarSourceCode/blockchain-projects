@@ -20,17 +20,21 @@ The portfolio primarily focuses on **Solana-based projects**, with future plans 
 
 ## Projects Overview
 
-| Project Name                                                              | Platform | Status  |
-| ------------------------------------------------------------------------- | -------- | ------- |
-| [solana-config-program](solana-projects/solana-config-program/README.md)  | Solana   | Active  |
-| [solana-escrow-program](solana-projects/solana-escrow-program/README.md)  | Solana   | Active  |
-| [solana-token-manager](solana-projects/solana-token-manager/README.md)    | Solana   | Active  |
-| [solana-nft-factory](solana-projects/solana-nft-factory/README.md)        | Solana   | Active  |
-| [solana-log-lab](solana-projects/solana-log-lab/README.md)                | Solana   | Active  |
-| [solana-price-oracle](solana-projects/solana-price-oracle/README.md)      | Solana   | Active  |
-| [solana-wallet-analyzer](solana-projects/solana-wallet-analyzer/README.md)| Solana   | Active  |
-| ethereum-example                                                          | Ethereum | Planned |
+| Project Name                                                                 | Category           | Platform | Status  |
+| ---------------------------------------------------------------------------- | ------------------ | -------- | ------- |
+| [solana-config-program](solana-projects/solana-config-program/README.md)     | On-chain Program   | Solana   | Active  |
+| [solana-escrow-program](solana-projects/solana-escrow-program/README.md)     | On-chain Program   | Solana   | Active  |
+| [solana-token-manager](solana-projects/solana-token-manager/README.md)       | On-chain Program   | Solana   | Active  |
+| [solana-nft-factory](solana-projects/solana-nft-factory/README.md)           | On-chain Program   | Solana   | Active  |
+| [solana-log-lab](solana-projects/solana-log-lab/README.md)                   | On-chain Program   | Solana   | Active  |
+| [solana-price-oracle](solana-projects/solana-price-oracle/README.md)         | Oracle / Infra     | Solana   | Active  |
+| [solana-wallet-analyzer](solana-projects/solana-wallet-analyzer/README.md)   | Tool / Analyzer    | Solana   | Active  |
+| ethereum-example                                                             | On-chain Program   | Ethereum | Planned |
 
+**Category legend:**
+- **On-chain Program** – Solana smart contracts (Anchor-based)
+- **Tool / Analyzer** – Off-chain tooling and analysis utilities
+- **Oracle / Infra** – Oracle integrations and infrastructure components
 ---
 
 ## How to Navigate
