@@ -60,7 +60,6 @@ export async function nftScan(
       let offset = 1 + 32 + 32;
       const offsetRef = { value: offset };
       
-
       nfts.push({
         mint: info.mint,
         name: readBorshString(data, offsetRef, ENCODING),

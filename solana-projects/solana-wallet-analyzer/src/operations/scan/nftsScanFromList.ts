@@ -6,6 +6,10 @@ import { ENCODING } from "../../constants.js";
 import { getMetadataPda } from "../../utils/getMetaplexPda.js";
 import { debugLog } from "../../utils/debug.js";
 import { readBorshString } from "../../utils/readBorshString.js";
+import { withRetry } from "../../utils/withRetry.js";
+import { rateLimit } from "../../utils/rateLimit.js";
+
+const rateLimiter = rateLimit(350); // public RPC safe
 
 /**
  * Scans a token list and extracts NFT metadata using SPL heuristics
@@ -29,7 +33,9 @@ export async function nftsScanFromList(
       const mintPublicKey = new PublicKey(token.mint);
       const metadataPda = getMetadataPda(mintPublicKey);
 
-      const accountInfo = await connection.getAccountInfo(metadataPda);
+      const accountInfo = await rateLimiter(() =>
+        withRetry(() => connection.getAccountInfo(metadataPda))
+      );
       if (!accountInfo)
       {
         debugLog("[NFT] metadata account not found", token.mint);
@@ -61,3 +67,4 @@ export async function nftsScanFromList(
 
   return nfts;
 }
+
