@@ -7,6 +7,7 @@ import { rateLimit } from "../../utils/rateLimit.js";
 import { getMetadataPda } from "../../utils/getMetaplexPda.js";
 import { ENCODING } from "../../constants.js";
 import { debugLog } from "../../utils/debug.js";
+import { readBorshString } from "../../utils/readBorshString.js";
 
 const rateLimiter = rateLimit(350); // public RPC safe
 
@@ -57,27 +58,14 @@ export async function nftScan(
 
       const data = metadataAccount.data;
       let offset = 1 + 32 + 32;
-
-      const readBorshString = (): string =>
-      {
-        const length = data.readUInt32LE(offset);
-        offset += 4;
-
-        const value = data
-          .subarray(offset, offset + length)
-          .toString(ENCODING)
-          .replace(/\0/g, "")
-          .trim();
-
-        offset += length;
-        return value;
-      };
+      const offsetRef = { value: offset };
+      
 
       nfts.push({
         mint: info.mint,
-        name: readBorshString(),
-        symbol: readBorshString(),
-        uri: readBorshString(),
+        name: readBorshString(data, offsetRef, ENCODING),
+        symbol: readBorshString(data, offsetRef, ENCODING),
+        uri: readBorshString(data, offsetRef, ENCODING),
       });
 
       debugLog("[NFT] metadata loaded", info.mint);

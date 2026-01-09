@@ -5,6 +5,7 @@ import { NftInfo } from "../../types/nftInfo.js";
 import { ENCODING } from "../../constants.js";
 import { getMetadataPda } from "../../utils/getMetaplexPda.js";
 import { debugLog } from "../../utils/debug.js";
+import { readBorshString } from "../../utils/readBorshString.js";
 
 /**
  * Scans a token list and extracts NFT metadata using SPL heuristics
@@ -35,28 +36,13 @@ export async function nftsScanFromList(
         continue;
       }
 
-      // Minimal Borsh string reader
       const data = accountInfo.data;
       let offset = 1 + 32 + 32;
+      const offsetRef = { value: offset };
 
-      const readBorshString = (): string =>
-      {
-        const length = data.readUInt32LE(offset);
-        offset += 4;
-
-        const value = data
-          .subarray(offset, offset + length)
-          .toString(ENCODING)
-          .replace(/\0/g, "")
-          .trim();
-
-        offset += length;
-        return value;
-      };
-
-      const name = readBorshString();
-      const symbol = readBorshString();
-      const uri = readBorshString();
+      const name = readBorshString(data, offsetRef, ENCODING);
+      const symbol = readBorshString(data, offsetRef, ENCODING);
+      const uri = readBorshString(data, offsetRef, ENCODING);
 
       nfts.push({
         mint: token.mint,

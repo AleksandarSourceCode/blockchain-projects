@@ -6,6 +6,7 @@ import { rateLimit } from "../../utils/rateLimit.js";
 import { ENCODING } from "../../constants.js";
 import { getMetadataPda } from "../../utils/getMetaplexPda.js";
 import { debugLog } from "../../utils/debug.js";
+import { readBorshString } from "../../utils/readBorshString.js";
 
 const rateLimiter = rateLimit(330);
 
@@ -50,25 +51,11 @@ export async function enrichSplMetadata(
 
       const data = accountInfo.data;
       let offset = 1 + 32 + 32;
+      const offsetRef = { value: offset };
 
-      const readBorshString = (): string =>
-      {
-        const length = data.readUInt32LE(offset);
-        offset += 4;
-
-        const value = data
-          .subarray(offset, offset + length)
-          .toString(ENCODING)
-          .replace(/\0/g, "")
-          .trim();
-
-        offset += length;
-        return value;
-      };
-
-      token.name = readBorshString();
-      token.symbol = readBorshString();
-      token.uri = readBorshString();
+      token.name = readBorshString(data, offsetRef, ENCODING);
+      token.symbol = readBorshString(data, offsetRef, ENCODING);
+      token.uri = readBorshString(data, offsetRef, ENCODING);
 
       enrichedTokens.push(token);
       processedCount++;
