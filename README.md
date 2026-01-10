@@ -2,10 +2,14 @@
 
 ## Overview
 
-This repository is an **educational and portfolio monorepo** for blockchain development projects.
-It provides a clear overview of multiple independent projects, including programs, tests, and documentation.
+This repository is an **educational and portfolio monorepo**
+for blockchain development projects.
 
-The repository primarily focuses on **Solana-based projects**, with future plans for Ethereum and other EVM-compatible platforms.
+It provides a clear overview of multiple independent projects,
+including programs, tests, and documentation.
+
+The repository primarily focuses on **Solana-based projects**,
+with future plans for **Ethereum and other EVM-compatible platforms**.
 
 ---
 
@@ -43,11 +47,13 @@ Each project is self-contained and includes its own:
 
 ## Notes
 
-Some projects include additional inline comments and more explicit implementations for educational clarity.
-In certain cases, code is intentionally simplified to highlight core concepts rather than production optimizations.
-
-Some tests are written in a more explicit style to make program behavior and runtime effects easier to observe,
-especially for readers less familiar with Solana and Anchor internals.
+- Some projects include additional inline comments
+  and more explicit implementations for educational clarity.
+- In certain cases, code is intentionally simplified
+  to highlight core concepts rather than production optimizations.
+- Some tests are written in a more explicit style
+  to make program behavior and runtime effects easier to observe,
+  especially for readers less familiar with Solana and Anchor internals.
 
 ---
 

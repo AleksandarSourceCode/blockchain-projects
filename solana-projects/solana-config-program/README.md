@@ -2,8 +2,12 @@
 
 ## Description
 
-A Solana on-chain program built with **Anchor** for managing global and user-specific configuration accounts.
-It demonstrates deterministic PDA design, explicit access control, and safe account management patterns on Solana.
+A Solana on-chain program built with **Anchor**
+for managing global and user-specific configuration accounts.
+
+It demonstrates deterministic PDA design,
+explicit access control,
+and safe account management patterns on Solana.
 
 ---
 

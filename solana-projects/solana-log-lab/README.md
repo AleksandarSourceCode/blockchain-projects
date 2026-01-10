@@ -2,8 +2,13 @@
 
 ## Description
 
-A Solana on-chain program built with **Anchor** that demonstrates the main logging patterns available on Solana.
-The project focuses on how logs are produced at runtime and how they can be reliably tested and inspected.
+A Solana on-chain program built with **Anchor**
+that demonstrates the main logging patterns
+available on Solana.
+
+The project focuses on how logs are produced
+at runtime and how they can be reliably tested
+and inspected.
 
 ---
 

@@ -2,8 +2,14 @@
 
 ## Description
 
-A Solana on-chain program built with **Anchor** that reads verified price data from **Pyth** using the pull model.
-The program supports both single-feed and batch price reads and emits structured events for off-chain use.
+A Solana on-chain program built with **Anchor**
+that reads verified price data from **Pyth**
+using the pull model.
+
+The program supports both single-feed
+and batch price reads,
+and emits structured events
+for off-chain use.
 
 ---
 
@@ -66,4 +72,5 @@ anchor test
 - The program uses verified Pyth price updates and enforces freshness checks.
 - Price data is reported via events rather than stored on-chain.
 - Batch reads reduce transaction overhead when querying multiple feeds.
-- This project intentionally uses older Solana and Anchor versions due to compatibility requirements of `pyth-solana-receiver-sdk`.
+- This project intentionally uses older Solana and Anchor versions
+  due to compatibility requirements of `pyth-solana-receiver-sdk`.
