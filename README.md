@@ -1,26 +1,24 @@
 # Blockchain Projects Portfolio
 
-**Author:** Aleksandar Joksić
-
 ## Overview
 
-This repository serves as a **professional portfolio** of my blockchain development work. It is designed as a **monorepo** to provide an organized overview of all projects, including programs, tests, and documentation.  
-The portfolio primarily focuses on **Solana-based projects**, with future plans for Ethereum and other EVM-compatible platforms.
+This repository is an **educational and portfolio monorepo** for blockchain development projects.
+It provides a clear overview of multiple independent projects, including programs, tests, and documentation.
 
-> This repository is intended for educational and portfolio purposes.
+The repository primarily focuses on **Solana-based projects**, with future plans for Ethereum and other EVM-compatible platforms.
 
 ---
 
 ## Project Structure
 
-- `solana-projects/` – Contains Solana-based programs, each organized in its own directory.
-- `ethereum-projects/` – (Planned) Future Ethereum and EVM-based projects.
+- `solana-projects/` – Solana-based programs, each organized in its own directory.
+- `ethereum-projects/` – (Planned) Ethereum and other EVM-compatible projects.
 
 ---
 
-## Projects Overview
+## Projects
 
-| Project Name                                                                 | Category           | Platform | Status  |
+| Project Name                                                                 | Type               | Platform | Status  |
 | ---------------------------------------------------------------------------- | ------------------ | -------- | ------- |
 | [solana-config-program](solana-projects/solana-config-program/README.md)     | On-chain Program   | Solana   | Active  |
 | [solana-escrow-program](solana-projects/solana-escrow-program/README.md)     | On-chain Program   | Solana   | Active  |
@@ -31,61 +29,27 @@ The portfolio primarily focuses on **Solana-based projects**, with future plans 
 | [solana-wallet-analyzer](solana-projects/solana-wallet-analyzer/README.md)   | Tool / Analyzer    | Solana   | Active  |
 | ethereum-example                                                             | On-chain Program   | Ethereum | Planned |
 
-**Category legend:**
-- **On-chain Program** – Solana smart contracts (Anchor-based)
-- **Tool / Analyzer** – Off-chain tooling and analysis utilities
-- **Oracle / Infra** – Oracle integrations and infrastructure components
 ---
 
 ## How to Navigate
 
-Each project inside the folders is self-contained with its own:
+Each project is self-contained and includes its own:
 
-- `src/` or `programs/` – Core on-chain program logic.
-- `tests/` – Integration and unit tests.
-- `README.md` – Project-specific documentation.
-- `.gitignore` – Project-level ignore rules (e.g., build artifacts, local ledgers).
-
----
-
-## How to Clone
-
-### Clone the entire portfolio:
-
-To get all projects at once:
-
-```bash
-git clone git@github.com:AleksandarSourceCode/blockchain-projects.git
-```
-
-### Clone a specific project only:
-
-```bash
-git clone --filter=blob:none --sparse git@github.com:AleksandarSourceCode/blockchain-projects.git
-cd blockchain-projects
-git sparse-checkout set solana-projects/solana-config-program
-```
+- `src/` or `programs/` – Core logic
+- `tests/` – Integration and unit tests (where applicable)
+- `README.md` – Project-specific documentation
 
 ---
 
-## Global Prerequisites
+## Notes
 
-Make sure the following tools are installed:
-
-- **Git**
-- **Rust**
-- **Node.js**
-- **npm or Yarn**
-- **Solana CLI**
-- **Anchor CLI**
-
-Specific project versions and additional dependencies are detailed in each project's README.
+Some projects include additional inline comments and more explicit implementations for educational clarity.
+In certain cases, code is intentionally simplified to highlight core concepts rather than production optimizations.
+Some tests are intentionally written in a more explicit style to make program behavior and runtime effects easier to observe.
+This is done for educational clarity, especially for readers less familiar with Solana and Anchor internals.
 
 ---
 
-## Contributing
+## Disclaimer
 
-This repository is primarily a personal portfolio, but suggestions
-and improvements are welcome via issues or pull requests.
-
----
+Educational and portfolio purposes only.

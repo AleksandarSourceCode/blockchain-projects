@@ -1,145 +1,69 @@
-# Solana Price Oracle (Pyth Pull)
+# Solana Price Oracle
 
-A minimal Solana oracle program built with **Anchor**, designed to fetch, validate, and emit Pyth price data using the **Pyth Pull model**.
+## Description
 
-The primary goal of this project is to **experiment with oracle integration on Solana**, understand how Pyth price updates work, and establish clean, testable oracle patterns for both single-feed and batch price reads.
-
----
-
-## ✨ Features
-
-- Reads verified Pyth price updates (`PriceUpdateV2`)
-- Supports **single-feed** and **batch** price reads
-- Validates price freshness with a configurable maximum age
-- Emits structured oracle output via Anchor `emit!` events
-- Uses `remaining_accounts` for dynamic batch inputs
-- Clean, modular program structure
-- Fully tested using Anchor + TypeScript
+A Solana on-chain program built with **Anchor** that reads verified price data from **Pyth** using the pull model.
+The program supports both single-feed and batch price reads and emits structured events for off-chain use.
 
 ---
 
-## 📁 Project Structure
+## What This Project Demonstrates
+
+- Reading verified Pyth price updates on Solana
+- Single-feed vs batch price queries in one transaction
+- Event-based reporting of oracle data
+- Deterministic validation of price freshness
+- Clean oracle instruction design with minimal state
+
+---
+
+## Structure
 
 ```
-solana-price-oracle
-├── Cargo.toml
-└── src
-    ├── constants.rs
-    ├── errors.rs
-    ├── events.rs
-    ├── instructions
-    │   ├── get_price.rs
-    │   ├── get_prices.rs
-    │   └── mod.rs
-    └── lib.rs
+programs/solana-price-oracle/
+├── src/
+│   ├── instructions/
+│   │   ├── get_price.rs
+│   │   └── get_prices.rs
+│   ├── events.rs
+│   ├── constants.rs
+│   ├── errors.rs
+│   └── lib.rs
 ```
 
 ---
 
-## 🧠 How It Works
+## Instructions / API
 
-### Single Price Read (`get_price`)
-
-1. A client calls `get_price` with:
-   - A Pyth feed ID (hex string)
-   - The corresponding `PriceUpdateV2` account
-2. The program:
-   - Parses and validates the feed ID
-   - Reads the verified price update
-   - Ensures the price is recent enough
-3. The verified price is:
-   - Emitted as a structured `PriceReported` event
+| Instruction  | Description                                                      |
+| ------------ | ---------------------------------------------------------------- |
+| `get_price`  | Reads a verified Pyth price for a single feed and emits an event |
+| `get_prices` | Reads verified prices for multiple feeds and emits events        |
 
 ---
 
-### Batch Price Read (`get_prices`)
+## Usage
 
-1. A client calls `get_prices` with:
-   - A list of Pyth feed IDs
-   - A matching list of `PriceUpdateV2` accounts passed via `remaining_accounts`
-2. The program enforces a **1:1 mapping** between feed IDs and accounts
-3. For each feed:
-   - The price is validated and read
-   - A `PriceReported` event is emitted
+Run program tests using Anchor:
 
-All prices are read within a **single transaction**, ensuring consistency.
-
----
-
-## 📤 Oracle Output
-
-The program emits a structured Anchor event for each price read:
-
-```rust
-PriceReported {
-    feed_id: [u8; 32],
-    price: i64,
-    exponent: i32,
-    publish_time: i64,
-}
+```bash
+anchor test
 ```
 
-This makes the oracle output:
-- Deterministic and IDL-decodable
-- Easy to consume in tests, frontends, or indexers
-- Clearly separated from human-readable logs
+---
+
+## Environment / Versions
+
+- Solana CLI: 1.18.17
+- Anchor CLI: 0.30.1
+- Rust: 1.89.x
+- Node.js: 20+ (for running tests)
 
 ---
 
-## 🧪 Testing
+## Notes
 
-Tests are written in **TypeScript** using the Anchor testing framework.
-
-They verify:
-- Successful execution of both `get_price` and `get_prices`
-- Correct handling of Pyth price update accounts
-- Emission of exactly one event per price feed
-- Correct decoding of events from `Program data:` logs
-- Valid publish timestamps and price values
-
-Batch tests use `remainingAccounts(...)` to supply dynamic Pyth update accounts.
-
----
-
-## 🔧 Versions Used
-
-This project was developed and tested with the following versions:
-
-- `anchor-lang = "0.30.1"`
-- `pyth-solana-receiver-sdk = "0.3.1"`
-- `solana-program = "1.18.17"`
-
----
-
-## 🔒 Security Model
-
-- The program is **read-only**
-- No state is written on-chain
-- No funds or authorities are handled
-- Only verified Pyth price update accounts are read
-- Price freshness is enforced via a maximum age check
-
-This project is **safe for experimentation**, but not intended for production deployment.
-
----
-
-## 🎯 Project Goal
-
-This repository is intentionally **minimal**.
-
-It serves as:
-- A learning project for Solana oracle mechanics
-- A reference implementation for Pyth Pull integration
-- An example of batch oracle design using `remaining_accounts`
-
----
-
-## 🚀 Possible Extensions
-
-- Persist prices in on-chain accounts (stateful oracle)
-- Add confidence interval (`conf`) support
-- Emit read timestamps in addition to publish timestamps
-- Support cross-program invocation (CPI) consumers
-- Add access-controlled or cached oracle layers
-
----
+- The program uses verified Pyth price updates and enforces freshness checks.
+- Price data is reported via events rather than stored on-chain.
+- Batch reads reduce transaction overhead when querying multiple feeds.
+- This project intentionally uses older Solana and Anchor versions due to compatibility requirements of `pyth-solana-receiver-sdk`.

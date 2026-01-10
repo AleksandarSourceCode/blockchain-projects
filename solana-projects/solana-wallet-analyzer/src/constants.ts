@@ -4,10 +4,10 @@ import { TOKEN_2022_PROGRAM_ID, TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import { TokenProgramConfig } from "./types/tokenProgramConfig.js";
 
 /**
- * Default wallet address used for analysis
+ * Wallet address to analyze.
+ * Must be provided by the user.
  */
-export const WALLET_ADDRESS =
-  "FwAbxSiCd2Wc8j7BeFfwSrnpHWDGmR4xqv6B6bgbwYKs";
+export const WALLET_ADDRESS = "";
 
 /**
  * Supported token programs
