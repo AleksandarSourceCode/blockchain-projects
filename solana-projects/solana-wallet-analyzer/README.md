@@ -89,16 +89,16 @@ Individual pipeline steps can be enabled or disabled directly in that file.
 
 ## Notes
 
-- The wallet address to analyze must be provided by the user
-  by updating the `WALLET_ADDRESS` constant.
-- API keys are required for Birdeye (https://birdeye.so)
-  and Helius (https://helius.dev)
-  and are provided via a local `keys.ts` file (not committed).
-- Birdeye and RPC endpoints are rate-limited;
-  retry logic is built in.
-- NFT detection uses a simple heuristic
-  (`amount === 1`, `decimals === 0`).
-- Token-2022 metadata is supported only when stored
-  via the metadata pointer extension.
-- The tool is not optimized for very large wallets
-  and is intended for educational use.
+- The wallet address to analyze must be provided by the user  
+  by updating the `WALLET_ADDRESS` constant.  
+- API keys are required for Birdeye (https://birdeye.so)  
+  and Helius (https://helius.dev)  
+  and are provided via a local `keys.ts` file (not committed).  
+- Birdeye and RPC endpoints are rate-limited;  
+  retry logic is built in.  
+- NFT detection uses a simple heuristic  
+  (`amount === 1`, `decimals === 0`).  
+- Token-2022 metadata is supported only when stored  
+  via the metadata pointer extension.  
+- The tool is not optimized for very large wallets  
+  and is intended for educational use.  

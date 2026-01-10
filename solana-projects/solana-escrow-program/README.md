@@ -2,12 +2,12 @@
 
 ## Description
 
-A Solana on-chain program built with **Anchor**
-that implements a simple, atomic token swap mechanism between two users.
+A Solana on-chain program built with **Anchor**  
+that implements a simple, atomic token swap mechanism between two users.  
 
-It demonstrates escrow-style swaps
-using PDAs and vault accounts,
-without maintaining complex on-chain state.
+It demonstrates escrow-style swaps  
+using PDAs and vault accounts,  
+without maintaining complex on-chain state.  
 
 ---
 

@@ -2,15 +2,15 @@
 
 ## Description
 
-A Solana on-chain program built with **Anchor**
-that demonstrates two distinct NFT creation flows
-using **SPL Token and Metaplex Metadata**:
-standalone NFTs and collection-based NFTs.
+A Solana on-chain program built with **Anchor**  
+that demonstrates two distinct NFT creation flows  
+using **SPL Token and Metaplex Metadata**:  
+standalone NFTs and collection-based NFTs.  
 
-The program focuses on clearly illustrating
-how NFT minting, metadata creation,
-and collection verification differ
-between these two approaches.
+The program focuses on clearly illustrating  
+how NFT minting, metadata creation,  
+and collection verification differ  
+between these two approaches.  
 
 ---
 
