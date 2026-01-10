@@ -45,8 +45,9 @@ Each project is self-contained and includes its own:
 
 Some projects include additional inline comments and more explicit implementations for educational clarity.
 In certain cases, code is intentionally simplified to highlight core concepts rather than production optimizations.
-Some tests are intentionally written in a more explicit style to make program behavior and runtime effects easier to observe.
-This is done for educational clarity, especially for readers less familiar with Solana and Anchor internals.
+
+Some tests are written in a more explicit style to make program behavior and runtime effects easier to observe,
+especially for readers less familiar with Solana and Anchor internals.
 
 ---
 
