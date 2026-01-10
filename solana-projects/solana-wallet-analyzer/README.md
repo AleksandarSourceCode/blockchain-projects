@@ -2,13 +2,11 @@
 
 ## Description
 
-A lightweight off-chain **educational and portfolio tool**
-for analyzing a Solana wallet
-using on-chain data and public APIs.
+A lightweight off-chain **educational and portfolio tool**  
+for analyzing a Solana wallet using on-chain data and public APIs.  
 
-The analyzer focuses on structured data collection,
-enrichment, and summarization
-rather than building a production service.
+The analyzer focuses on structured data collection, enrichment,  
+and summarization rather than building a production service.  
 
 ---
 

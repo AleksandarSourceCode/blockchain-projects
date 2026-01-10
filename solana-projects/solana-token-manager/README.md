@@ -6,8 +6,7 @@ A Solana on-chain program built with **Anchor**
 that compares and demonstrates the practical differences  
 between **SPL Token** and **Token-2022** standards.  
 
-The project focuses on instruction design,  
-authority management,  
+The project focuses on instruction design, authority management,  
 and metadata handling across both token programs.  
 
 ---
