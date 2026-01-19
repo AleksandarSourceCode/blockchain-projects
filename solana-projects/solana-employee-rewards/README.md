@@ -250,15 +250,16 @@ Test helpers cover:
 
 ## Possible Extensions
 
-- Enforcing non-transferable _Member Status NFTs_ using Token-2022  
-  non-transferable extensions.
 - Introducing multiple pause modes (e.g. full vs operational pause),  
   allowing task execution to continue while financial operations are frozen.
+- Supporting a backup administrator role to allow controlled recovery  
+  of administrative authority in case of key loss.
+- Supporting delegated administrative roles for task approval and reward management.
+- Enforcing non-transferable _Member Status NFTs_ using Token-2022  
+  non-transferable extensions.
 - Supporting non-stable reward tokens with configurable normalization factors  
   that map token amounts to a USD-equivalent value, optionally backed by price oracles.
 - Supporting multiple reward valuation strategies for converting reward tokens  
   into treasury payout assets (fixed-rate, factor-based, or oracle-driven).
-- Expanding test coverage to additional edge cases and failure scenarios.
-- Supporting delegated administrative roles for task approval and reward management.
 
 ---
