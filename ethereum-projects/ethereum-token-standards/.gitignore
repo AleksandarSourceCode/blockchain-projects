@@ -1,0 +1,23 @@
+# Node
+/node_modules
+*.log
+
+# Build outputs
+/dist
+/bundle
+
+# Hardhat
+/artifacts
+/cache
+/coverage
+/types
+/.hardhat
+
+# Env
+.env
+
+# Editor / OS
+.DS_Store
+.idea
+.vscode
+*.swp
