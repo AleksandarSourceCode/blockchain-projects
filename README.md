@@ -34,6 +34,7 @@ with future plans for **other EVM-compatible platforms**.
 | [solana-wallet-analyzer](solana-projects/solana-wallet-analyzer/README.md)       | Tool / Analyzer  | Solana   | Active      |
 | [solana-employee-rewards](solana-projects/solana-employee-rewards/README.md)     | On-chain Program | Solana   | ⭐ Featured |
 | [ethereum-token-standards](ethereum-projects/ethereum-token-standards/README.md) | Smart Contracts  | Ethereum | Active      |
+| [ethereum-amm-oracle-lab](ethereum-projects/ethereum-amm-oracle-lab/README.md)   | DeFi Protocol    | Ethereum | Active      |
 
 ---
 

@@ -146,41 +146,7 @@ Deployment scripts are provided **only** for OpenZeppelin contracts.
 
 ---
 
-### Tests
-
-    test/
-    ├── solidity
-    │   ├── manual
-    │   │   ├── erc20
-    │   │   │   ├── SimpleERC20.t.sol
-    │   │   │   └── CappedPausableERC20.t.sol
-    │   │   └── erc721
-    │   │       ├── SimpleERC721.t.sol
-    │   │       └── ERC721WithURI.t.sol
-    │   └── openzeppelin
-    │       ├── erc20
-    │       │   └── OZERC20.t.sol
-    │       └── erc721
-    │           └── OZERC721.t.sol
-    └── integration
-        ├── manual
-        │   ├── erc20
-        │   │   ├── SimpleERC20.ts
-        │   │   └── CappedPausableERC20.ts
-        │   └── erc721
-        │       ├── SimpleERC721.ts
-        │       └── ERC721WithURI.ts
-        └── openzeppelin
-            ├── erc20
-            │   └── OZERC20.ts
-            ├── erc721
-            │   └── OZERC721.ts
-            └── erc1155
-                └── OZERC1155.ts
-
----
-
-## Testing Strategy
+## Tests
 
 ### Solidity Unit Tests (`.t.sol`)
 
@@ -223,9 +189,3 @@ ETHERSCAN_API_KEY=
 ```
 
 Variables are loaded as environment variables and are not committed.
-
----
-
-## License
-
-MIT
