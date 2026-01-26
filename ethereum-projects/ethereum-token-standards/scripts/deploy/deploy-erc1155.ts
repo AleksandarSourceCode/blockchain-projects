@@ -14,7 +14,7 @@ async function main() {
   );
 
   const BASE_URI =
-    "https://raw.githubusercontent.com/AleksandarSourceCode/dev-assets/main/json/collections/wow/ERC1155/wow{id}.json";
+    "https://raw.githubusercontent.com/AleksandarSourceCode/dev-assets/main/json/collections/wow/ERC1155/{id}.json";
 
   const token = await ethers.deployContract("OZERC1155", [BASE_URI]);
 
