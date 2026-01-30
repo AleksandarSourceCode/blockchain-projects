@@ -1,11 +1,11 @@
 # Blockchain Projects Portfolio
 
-![Rust](https://img.shields.io/badge/Rust-000000?style=flat&logo=rust)
-![Solidity](https://img.shields.io/badge/Solidity-363636?style=flat&logo=solidity)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript)
 ![Anchor](https://img.shields.io/badge/Anchor-4E44CE?style=flat)
-![Foundry](https://img.shields.io/badge/Foundry-000000?style=flat)
+![Rust](https://img.shields.io/badge/Rust-000000?style=flat&logo=rust)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript)
 ![Hardhat](https://img.shields.io/badge/Hardhat-F7DF1E?style=flat&logo=ethereum)
+![Solidity](https://img.shields.io/badge/Solidity-363636?style=flat&logo=solidity)
+![Foundry](https://img.shields.io/badge/Foundry-000000?style=flat)
 
 ## Overview
 
@@ -45,36 +45,6 @@ This repository is an **educational portfolio monorepo** showcasing a collection
 The featured projects represent the most comprehensive systems in this portfolio. Together, they form two complete and interconnected layers: a **governance voting application on Ethereum** and a **yearly employee reward system on Solana**.
 
 In this architecture, the Ethereum-based **ethereum-employee-voting** project emits finalized governance outcomes. These outcomes are consumed by the Solana-based **solana-employee-rewards** program to mint special-purpose reward tokens as a post-cycle recognition mechanism based on employee-wide voting.
-
-```mermaid
-
-flowchart LR
-%% =========================
-%% Ethereum Governance Layer
-%% =========================
-subgraph ETH[Ethereum Governance Layer]
-A[Ethereum Employee Voting]
-A -->|Finalize Proposal| B[Governance Result]
-B --> C[Event Emission]
-end
-
-    %% =========================
-    %% Cross-Chain Messaging
-    %% =========================
-    subgraph CC[Cross-Chain Messaging Layer]
-        C --> D[Wormhole Relayer]
-        D -->|Verified Message| E[Cross-Chain Payload]
-    end
-
-    %% =========================
-    %% Solana Reward Layer
-    %% =========================
-    subgraph SOL[Solana Reward Execution Layer]
-        E --> F[Solana Employee Rewards Program]
-        F --> G[Reward Settlement Logic]
-        G --> H[Mint Special-Purpose Reward Tokens]
-    end
-```
 
 **Source Code Access**
 The full source code for these flagship projects is maintained privately and can be reviewed in controlled evaluation settings, such as technical interviews, guided walkthroughs, or private screen-sharing sessions.
@@ -120,7 +90,3 @@ Each project is designed to be self-contained for easier auditing and review. In
 ## Disclaimer
 
 This repository is for **educational and portfolio purposes only**. The code is not audited and should not be used in production environments involving real financial assets.
-
-```
-
-```
