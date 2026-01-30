@@ -1,15 +1,15 @@
 # Blockchain Projects Portfolio
 
+![Rust](https://img.shields.io/badge/Rust-000000?style=flat&logo=rust)
+![Solidity](https://img.shields.io/badge/Solidity-363636?style=flat&logo=solidity)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript)
+![Anchor](https://img.shields.io/badge/Anchor-4E44CE?style=flat)
+![Foundry](https://img.shields.io/badge/Foundry-000000?style=flat)
+![Hardhat](https://img.shields.io/badge/Hardhat-F7DF1E?style=flat&logo=ethereum)
+
 ## Overview
 
 This repository is an **educational portfolio monorepo** showcasing a collection of **independent blockchain projects**. The focus is on on-chain architecture, protocol design, and high-quality smart contract development across both Solana and Ethereum ecosystems.
-
----
-
-## Project Structure
-
-- `solana-projects/` – Rust-based programs built with the Anchor framework.
-- `ethereum-projects/` – Solidity smart contracts built with the Hardhat framework.
 
 ---
 
@@ -40,28 +40,79 @@ This repository is an **educational portfolio monorepo** showcasing a collection
 
 ---
 
-## How to Navigate
+### ⭐ Featured Cross-Chain Integration
 
-Each project is designed to be self-contained for easier auditing and learning. Inside each directory you will find:
+The featured projects represent the most comprehensive systems in this portfolio. Together, they form two complete and interconnected layers: a **governance voting application on Ethereum** and a **yearly employee reward system on Solana**.
 
-- `programs/`, `src/`, or `contracts/` – The core on-chain logic and smart contracts.
-- `tests/` – Comprehensive test suites (Foundry, Hardhat, or Anchor/Mocha).
-- `README.md` – Detailed technical documentation, architectural diagrams, and setup guides.
+In this architecture, the Ethereum-based **ethereum-employee-voting** project emits finalized governance outcomes. These outcomes are consumed by the Solana-based **solana-employee-rewards** program to mint special-purpose reward tokens as a post-cycle recognition mechanism based on employee-wide voting.
+
+```mermaid
+
+flowchart LR
+%% =========================
+%% Ethereum Governance Layer
+%% =========================
+subgraph ETH[Ethereum Governance Layer]
+A[Ethereum Employee Voting]
+A -->|Finalize Proposal| B[Governance Result]
+B --> C[Event Emission]
+end
+
+    %% =========================
+    %% Cross-Chain Messaging
+    %% =========================
+    subgraph CC[Cross-Chain Messaging Layer]
+        C --> D[Wormhole Relayer]
+        D -->|Verified Message| E[Cross-Chain Payload]
+    end
+
+    %% =========================
+    %% Solana Reward Layer
+    %% =========================
+    subgraph SOL[Solana Reward Execution Layer]
+        E --> F[Solana Employee Rewards Program]
+        F --> G[Reward Settlement Logic]
+        G --> H[Mint Special-Purpose Reward Tokens]
+    end
+```
+
+**Source Code Access**
+The full source code for these flagship projects is maintained privately and can be reviewed in controlled evaluation settings, such as technical interviews, guided walkthroughs, or private screen-sharing sessions.
 
 ---
 
-## Technical Philosophy
+## Project Structure
 
-- **Clarity Over Abstraction:** Implementations favor explicit state transitions and clear logic to better illustrate core blockchain concepts.
-- **Security Mindset:** Use of industry standards (OpenZeppelin, Anchor safety checks), custom error handling, and protection against common vectors like price manipulation.
-- **Educational Transparency:** Projects include extensive inline comments and documentation to explain the "why" behind specific architecture choices.
+- `solana-projects/` – Rust-based programs built with the Anchor framework.
+- `ethereum-projects/` – Solidity smart contracts built with Hardhat and Foundry.
+
+---
+
+## How to Navigate
+
+Each project is designed to be self-contained for easier auditing and review. Inside each directory you will find:
+
+- `programs/`, `src/`, or `contracts/` – Core on-chain logic and smart contracts.
+- `tests/` – Comprehensive test suites (Foundry, Hardhat, or Anchor/Mocha).
+- `README.md` – Technical documentation, architectural diagrams, and setup guides.
+
+---
+
+## Design Principles
+
+- **Modular Architecture:** Separation of concerns through interface-driven design and decoupled state management, ensuring system extensibility.
+- **Defensive Programming:** Implementation of strict access controls, rigorous state validation, and custom error handling to mitigate on-chain attack vectors.
+- **Standard Compliance:** Strict adherence to core protocol standards (ERC, SPL, Token-2022) to ensure seamless interoperability across the Web3 ecosystem.
+- **Verification & Testing:** Commitment to high code quality through layered testing strategies, encompassing unit logic (Foundry/Anchor) and end-to-end integration flows.
+
+> Some modules intentionally favor explicit comments, visually traceable tests, and simplified logic to emphasize conceptual clarity and protocol behavior over production-level optimization.
 
 ---
 
 ## Environment & Tools
 
-- **Solana:** Rust, Anchor Framework, Solana CLI.
-- **Ethereum:** Solidity, Hardhat, Foundry, Ethers.js v6.
+- **Solana Stack:** Rust, Anchor Framework, Solana CLI.
+- **Ethereum Stack:** Solidity, Hardhat, Foundry, Ethers.js v6.
 - **Infrastructure:** Pyth Network, Wormhole, Helius, Birdeye APIs.
 
 ---
@@ -69,3 +120,7 @@ Each project is designed to be self-contained for easier auditing and learning. 
 ## Disclaimer
 
 This repository is for **educational and portfolio purposes only**. The code is not audited and should not be used in production environments involving real financial assets.
+
+```
+
+```
