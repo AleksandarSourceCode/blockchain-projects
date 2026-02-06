@@ -35,11 +35,11 @@ This repository is an **educational portfolio monorepo** showcasing a collection
 
 ## Ethereum Projects
 
-| Project                                                                             | Type                        | Focus                                                                     |
-| :---------------------------------------------------------------------------------- | :-------------------------- | :------------------------------------------------------------------------ |
-| [ethereum-token-standards](ethereum-projects/ethereum-token-standards/README.md)    | **Token Standards / Lab**   | Deep dive into ERC-20, ERC-721, and ERC-1155 reference implementations.   |
-| [ethereum-amm-oracle-lab](ethereum-projects/ethereum-amm-oracle-lab/README.md)      | **DeFi Protocol / AMM Lab** | Constant-product AMM mechanics with slippage and oracle protection.       |
-| ⭐ [ethereum-employee-voting](ethereum-projects/ethereum-employee-voting/README.md) | **Governance Engine**       | Modular voting primitives with stake-weighting and cross-chain potential. |
+| Project                                                                             | Type                        | Focus                                                                              |
+| :---------------------------------------------------------------------------------- | :-------------------------- | :--------------------------------------------------------------------------------- |
+| [ethereum-token-standards](ethereum-projects/ethereum-token-standards/README.md)    | **Token Standards / Lab**   | Deep dive into ERC-20, ERC-721, and ERC-1155 reference implementations.            |
+| [ethereum-amm-oracle-lab](ethereum-projects/ethereum-amm-oracle-lab/README.md)      | **DeFi Protocol / AMM Lab** | Constant-product AMM mechanics with slippage and oracle protection.                |
+| ⭐ [ethereum-employee-voting](ethereum-projects/ethereum-employee-voting/README.md) | **Governance Engine**       | Modular voting primitives with stake-weighting and Wormhole-based result emission. |
 
 ---
 
