@@ -45,31 +45,17 @@ This repository is an **educational portfolio monorepo** showcasing a collection
 
 ### ⭐ Featured Cross-Chain Integration
 
-The featured projects demonstrate a cross-chain concept connecting **Ethereum governance**  
-with **Solana-based reward systems**.
+The featured projects demonstrate a cross-chain concept connecting **Ethereum governance** with **Solana-based reward systems**.
 
-On Ethereum, the **ethereum-employee-voting** project enables voting across multiple  
-proposal types, including **choice-based proposals** (e.g. “Employee of the Year”).  
-Finalized voting results from these proposals are emitted as Wormhole messages.
+On Ethereum, the **ethereum-employee-voting** project enables voting across multiple proposal types, including **choice-based proposals** (e.g. “Employee of the Year”). Finalized voting results from these proposals are emitted as Wormhole messages.
 
-On Solana, the **solana-employee-rewards** project models an annual reward system based  
-on completed tasks, with support for minting **special-purpose tokens** to recognize  
-exceptional contributions.
+On Solana, the **solana-employee-rewards** project models an annual reward system based on completed tasks, with support for minting **special-purpose tokens** to recognize exceptional contributions.
 
-To bridge these two layers, the **solana-wormhole-verifier** project verifies Wormhole  
-VAAs on Solana and stores verified messages as on-chain accounts. VAA data is fetched  
-off-chain from WormholeScan using a dedicated fetcher, while the Anchor program  
-validates guardian signatures via the official Wormhole verification shim.
+To bridge these two layers, the **solana-wormhole-verifier** project verifies Wormhole VAAs on Solana and stores verified messages as on-chain accounts. VAA data is fetched off-chain from WormholeScan using a dedicated fetcher, while the Anchor program validates guardian signatures via the official Wormhole verification shim.
 
-The final step of consuming verified messages inside the reward application  
-(e.g. minting tokens in `solana-employee-rewards`) is intentionally omitted.  
-Once a message is verified and persisted on Solana, downstream execution becomes a  
-straightforward application-level concern.
+The final step of consuming verified messages inside the reward application (e.g. minting tokens in `solana-employee-rewards`) is intentionally omitted. Once a message is verified and persisted on Solana, downstream execution becomes a straightforward application-level concern.
 
-This design intentionally emphasizes **cross-chain mechanics and verification flow**  
-over application-specific specialization, keeping the implementation general and  
-focused on the core concept. The Ethereum and Solana projects are intentionally  
-kept independent to preserve their primary purpose and presentation scope.
+This design intentionally emphasizes **cross-chain mechanics and verification flow** over application-specific specialization, keeping the implementation general and focused on the core concept. The Ethereum and Solana projects are intentionally kept independent to preserve their primary purpose and presentation scope.
 
 ---
 
