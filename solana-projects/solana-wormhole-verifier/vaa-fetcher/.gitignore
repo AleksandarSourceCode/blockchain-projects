@@ -1,0 +1,6 @@
+# Runtime output
+json/
+state/
+
+# Node dependencies
+node_modules/

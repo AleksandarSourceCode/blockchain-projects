@@ -19,16 +19,17 @@ This repository is an **educational portfolio monorepo** showcasing a collection
 
 ⭐ marks **featured / flagship** projects that demonstrate complex system design.
 
-| Project                                                                         | Type                             | Focus                                                                    |
-| :------------------------------------------------------------------------------ | :------------------------------- | :----------------------------------------------------------------------- |
-| [solana-config-program](solana-projects/solana-config-program/README.md)        | **Infrastructure / Registry**    | Global configuration accounts and deterministic PDA registry patterns.   |
-| [solana-escrow-program](solana-projects/solana-escrow-program/README.md)        | **DeFi / Atomic Swap**           | Secure token swap logic using vault PDAs and atomic execution.           |
-| [solana-token-manager](solana-projects/solana-token-manager/README.md)          | **Token Standards / Lab**        | Comparative study of SPL Token vs. Token-2022 extensions.                |
-| [solana-nft-factory](solana-projects/solana-nft-factory/README.md)              | **Digital Assets / NFT Tooling** | Multi-flow NFT minting pipelines, metadata, and collection verification. |
-| [solana-log-lab](solana-projects/solana-log-lab/README.md)                      | **Dev Tooling / Lab**            | Advanced runtime logging, event emission, and program diagnostics.       |
-| [solana-price-oracle](solana-projects/solana-price-oracle/README.md)            | **Infrastructure / Oracle**      | Integration with Pyth Network using the pull-based oracle model.         |
-| [solana-wallet-analyzer](solana-projects/solana-wallet-analyzer/README.md)      | **Data Tooling / Analytics**     | Off-chain TypeScript tool for wallet indexing and data enrichment.       |
-| ⭐ [solana-employee-rewards](solana-projects/solana-employee-rewards/README.md) | **Enterprise Web3 / dApp**       | Full-scale rewards system with annual cycles, treasury, and NFT badges.  |
+| Project                                                                           | Type                             | Focus                                                                           |
+| :-------------------------------------------------------------------------------- | :------------------------------- | :------------------------------------------------------------------------------ |
+| [solana-config-program](solana-projects/solana-config-program/README.md)          | **Infrastructure / Registry**    | Global configuration accounts and deterministic PDA registry patterns.          |
+| [solana-escrow-program](solana-projects/solana-escrow-program/README.md)          | **DeFi / Atomic Swap**           | Secure token swap logic using vault PDAs and atomic execution.                  |
+| [solana-token-manager](solana-projects/solana-token-manager/README.md)            | **Token Standards / Lab**        | Comparative study of SPL Token vs. Token-2022 extensions.                       |
+| [solana-nft-factory](solana-projects/solana-nft-factory/README.md)                | **Digital Assets / NFT Tooling** | Multi-flow NFT minting pipelines, metadata, and collection verification.        |
+| [solana-log-lab](solana-projects/solana-log-lab/README.md)                        | **Dev Tooling / Lab**            | Advanced runtime logging, event emission, and program diagnostics.              |
+| [solana-price-oracle](solana-projects/solana-price-oracle/README.md)              | **Infrastructure / Oracle**      | Integration with Pyth Network using the pull-based oracle model.                |
+| [solana-wallet-analyzer](solana-projects/solana-wallet-analyzer/README.md)        | **Data Tooling / Analytics**     | Off-chain TypeScript tool for wallet indexing and data enrichment.              |
+| ⭐ [solana-employee-rewards](solana-projects/solana-employee-rewards/README.md)   | **Enterprise Web3 / dApp**       | Full-scale rewards system with annual cycles, treasury, and NFT badges.         |
+| ⭐ [solana-wormhole-verifier](solana-projects/solana-wormhole-verifier/README.md) | **Infrastructure / Cross-Chain** | On-chain verification of Wormhole VAAs with deterministic message finalization. |
 
 ---
 
@@ -44,12 +45,31 @@ This repository is an **educational portfolio monorepo** showcasing a collection
 
 ### ⭐ Featured Cross-Chain Integration
 
-The featured projects represent the most comprehensive systems in this portfolio. Together, they form two complete and interconnected layers: a **governance voting application on Ethereum** and a **yearly employee reward system on Solana**.
+The featured projects demonstrate a cross-chain concept connecting **Ethereum governance**  
+with **Solana-based reward systems**.
 
-In this architecture, the Ethereum-based **ethereum-employee-voting** project emits finalized governance outcomes. These outcomes are consumed by the Solana-based **solana-employee-rewards** program to mint special-purpose reward tokens as a post-cycle recognition mechanism based on employee-wide voting.
+On Ethereum, the **ethereum-employee-voting** project enables voting across multiple  
+proposal types, including **choice-based proposals** (e.g. “Employee of the Year”).  
+Finalized voting results from these proposals are emitted as Wormhole messages.
 
-**Source Code Access**
-The full source code for these flagship projects is maintained privately and can be reviewed in controlled evaluation settings, such as technical interviews, guided walkthroughs, or private screen-sharing sessions.
+On Solana, the **solana-employee-rewards** project models an annual reward system based  
+on completed tasks, with support for minting **special-purpose tokens** to recognize  
+exceptional contributions.
+
+To bridge these two layers, the **solana-wormhole-verifier** project verifies Wormhole  
+VAAs on Solana and stores verified messages as on-chain accounts. VAA data is fetched  
+off-chain from WormholeScan using a dedicated fetcher, while the Anchor program  
+validates guardian signatures via the official Wormhole verification shim.
+
+The final step of consuming verified messages inside the reward application  
+(e.g. minting tokens in `solana-employee-rewards`) is intentionally omitted.  
+Once a message is verified and persisted on Solana, downstream execution becomes a  
+straightforward application-level concern.
+
+This design intentionally emphasizes **cross-chain mechanics and verification flow**  
+over application-specific specialization, keeping the implementation general and  
+focused on the core concept. The Ethereum and Solana projects are intentionally  
+kept independent to preserve their primary purpose and presentation scope.
 
 ---
 
