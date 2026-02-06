@@ -9,7 +9,7 @@
 
 ## Overview
 
-This repository is an **educational portfolio monorepo** showcasing a collection of **independent blockchain projects**. The focus is on on-chain architecture, protocol design, and high-quality smart contract development across both Solana and Ethereum ecosystems.
+This repository is an **educational portfolio monorepo** showcasing a collection of **independent blockchain projects**. The focus is on system architecture, protocol design, and on-chain development across Solana and Ethereum ecosystems.
 
 **Projects are intentionally backend-focused and do not include frontend implementations.**
 
@@ -19,17 +19,17 @@ This repository is an **educational portfolio monorepo** showcasing a collection
 
 ⭐ marks **featured / flagship** projects that demonstrate complex system design.
 
-| Project                                                                           | Type                             | Focus                                                                           |
-| :-------------------------------------------------------------------------------- | :------------------------------- | :------------------------------------------------------------------------------ |
-| [solana-config-program](solana-projects/solana-config-program/README.md)          | **Infrastructure / Registry**    | Global configuration accounts and deterministic PDA registry patterns.          |
-| [solana-escrow-program](solana-projects/solana-escrow-program/README.md)          | **DeFi / Atomic Swap**           | Secure token swap logic using vault PDAs and atomic execution.                  |
-| [solana-token-manager](solana-projects/solana-token-manager/README.md)            | **Token Standards / Lab**        | Comparative study of SPL Token vs. Token-2022 extensions.                       |
-| [solana-nft-factory](solana-projects/solana-nft-factory/README.md)                | **Digital Assets / NFT Tooling** | Multi-flow NFT minting pipelines, metadata, and collection verification.        |
-| [solana-log-lab](solana-projects/solana-log-lab/README.md)                        | **Dev Tooling / Lab**            | Advanced runtime logging, event emission, and program diagnostics.              |
-| [solana-price-oracle](solana-projects/solana-price-oracle/README.md)              | **Infrastructure / Oracle**      | Integration with Pyth Network using the pull-based oracle model.                |
-| [solana-wallet-analyzer](solana-projects/solana-wallet-analyzer/README.md)        | **Data Tooling / Analytics**     | Off-chain TypeScript tool for wallet indexing and data enrichment.              |
-| ⭐ [solana-employee-rewards](solana-projects/solana-employee-rewards/README.md)   | **Enterprise Web3 / dApp**       | Full-scale rewards system with annual cycles, treasury, and NFT badges.         |
-| ⭐ [solana-wormhole-verifier](solana-projects/solana-wormhole-verifier/README.md) | **Infrastructure / Cross-Chain** | On-chain verification of Wormhole VAAs with deterministic message finalization. |
+| Project                                                                           | Type                             | Focus                                                                    |
+| :-------------------------------------------------------------------------------- | :------------------------------- | :----------------------------------------------------------------------- |
+| [solana-config-program](solana-projects/solana-config-program/README.md)          | **Infrastructure / Registry**    | Global configuration accounts and deterministic PDA registry patterns.   |
+| [solana-escrow-program](solana-projects/solana-escrow-program/README.md)          | **DeFi / Atomic Swap**           | Secure token swap logic using vault PDAs and atomic execution.           |
+| [solana-token-manager](solana-projects/solana-token-manager/README.md)            | **Token Standards / Lab**        | Comparative study of SPL Token vs. Token-2022 extensions.                |
+| [solana-nft-factory](solana-projects/solana-nft-factory/README.md)                | **Digital Assets / NFT Tooling** | Multi-flow NFT minting pipelines, metadata, and collection verification. |
+| [solana-log-lab](solana-projects/solana-log-lab/README.md)                        | **Dev Tooling / Lab**            | Advanced runtime logging, event emission, and program diagnostics.       |
+| [solana-price-oracle](solana-projects/solana-price-oracle/README.md)              | **Infrastructure / Oracle**      | Integration with Pyth Network using the pull-based oracle model.         |
+| [solana-wallet-analyzer](solana-projects/solana-wallet-analyzer/README.md)        | **Data Tooling / Analytics**     | Off-chain TypeScript tool for wallet indexing and data enrichment.       |
+| ⭐ [solana-employee-rewards](solana-projects/solana-employee-rewards/README.md)   | **Enterprise Web3 / dApp**       | Full-scale rewards system with annual cycles, treasury, and NFT badges.  |
+| ⭐ [solana-wormhole-verifier](solana-projects/solana-wormhole-verifier/README.md) | **Infrastructure / Cross-Chain** | On-chain Wormhole VAA verification and deterministic message storage.    |
 
 ---
 
@@ -78,10 +78,10 @@ Each project is designed to be self-contained for easier auditing and review. In
 
 ## Design Principles
 
-- **Modular Architecture:** Separation of concerns through interface-driven design and decoupled state management, ensuring system extensibility.
-- **Defensive Programming:** Implementation of strict access controls, rigorous state validation, and custom error handling to mitigate on-chain attack vectors.
-- **Standard Compliance:** Strict adherence to core protocol standards (ERC, SPL, Token-2022) to ensure seamless interoperability across the Web3 ecosystem.
-- **Verification & Testing:** Commitment to high code quality through layered testing strategies, encompassing unit logic (Foundry/Anchor) and end-to-end integration flows.
+- **Modular Architecture:** Program logic and state are organized into independent modules with clearly defined responsibilities.
+- **Defensive Design:** Access checks, state validation, and explicit error handling are used to enforce expected behavior.
+- **Standard Compliance:** Core functionality follows established protocol standards (ERC, SPL, Token-2022).
+- **Testability:** The architecture is structured to support validation through unit and integration tests.
 
 > Some modules intentionally favor explicit comments, visually traceable tests, and simplified logic to emphasize conceptual clarity and protocol behavior over production-level optimization.
 
@@ -89,6 +89,7 @@ Each project is designed to be self-contained for easier auditing and review. In
 
 ## Environment & Tools
 
+- **Backend & Tooling:** Node.js, TypeScript.
 - **Solana Stack:** Rust, Anchor Framework, Solana CLI.
 - **Ethereum Stack:** Solidity, Hardhat, Foundry, Ethers.js v6.
 - **Infrastructure:** Pyth Network, Wormhole, Helius, Birdeye APIs.
