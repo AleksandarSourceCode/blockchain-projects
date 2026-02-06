@@ -185,6 +185,60 @@ This design prioritizes **safety, simplicity, and auditability**.
 
 ---
 
+## High-Level Reward Flow
+
+```text
+
+        ADMINISTRATIVE (Authority)             EMPLOYEE (User) / STATE
+      +---------------------------+          +---------------------------+
+      |  Initialize GlobalConfig  |          |                           |
+      | (Admin, Payout Mint, PDA) |          |     SYSTEM INITIALIZED    |
+      +-------------+-------------+          |                           |
+                    |                        |                           |
+      +-------------v-------------+          |                           |
+      |   Open Reward Year (PDA)  |          |    YEARLY CONTEXT READY   |
+      | (Rank Logic & Thresholds) |          |                           |
+      +-------------+-------------+          +---------------------------+
+                    |
+      +-------------v-------------+          +---------------------------+
+      |     RegisterEmployee      |          |                           |
+      |  (Admin inits PDA for EE) +---------->      EMPLOYEE ACTIVE      |
+      +-------------+-------------+          |      (Ready to earn)      |
+                    |                        +-------------+-------------+
+      +-------------v-------------+                        |
+      |  Create Task Definitions  |          +-------------v-------------+
+      | (Points & Task Metadata)  |          |  StartTask -> SubmitTask  |
+      +-------------+-------------+ <------> |  (Task State Management)  |
+                    |                        +-------------+-------------+
+      +-------------v-------------+                        |
+      |   Approve/Reject Task     |          +-------------v-------------+
+      | (Validates Contribution)  +---------->   Points Recorded (State) |
+      +-------------+-------------+          |     (Claimed points)      |
+                    |                        +-------------+-------------+
+      +-------------v-------------+                        |
+      |      CloseRewardYear      |          +-------------+-------------+
+      | (Freezes Task Submission) |          |                           |
+      +-------------+-------------+          |      LOCKING PERIOD       |
+                    |                        |                           |
+      +-------------v-------------+          +-------------v-------------+
+      |     SettleEmployees       +---------->   Final Rank Determined   |
+      | (Calculates Final Results)|          |  (Eligible for Minting)   |
+      +-------------+-------------+          +-------------+-------------+
+                    |                                      |
+      +-------------v-------------+          +-------------v-------------+
+      |      MINTING PHASE        |          |      RECEIVE ASSETS       |
+      | - MintRewardTokens        +----------> - Fungible Reward Token   |
+      | - MintStatusNFT (Rank)    |          | - Non-transferable NFT    |
+      +-------------+-------------+          +-------------+-------------+
+                    |                                      |
+      +-------------v-------------+          +-------------v-------------+
+      |      RedeemTokens         |          |    Treasury Payout        |
+      | (Burn Rewards -> Transfer)| <--------+   (USDC / SOL / USDT)     |
+      +---------------------------+          +---------------------------+
+```
+
+---
+
 ## Project Structure
 
 ```
