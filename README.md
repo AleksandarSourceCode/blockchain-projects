@@ -25,7 +25,7 @@ This repository is an **educational portfolio monorepo** showcasing a collection
 | [solana-escrow-program](solana-projects/solana-escrow-program/README.md)          | **DeFi / Atomic Swap**           | Secure token swap logic using vault PDAs and atomic execution.           |
 | [solana-token-manager](solana-projects/solana-token-manager/README.md)            | **Token Standards / Lab**        | Comparative study of SPL Token vs. Token-2022 extensions.                |
 | [solana-nft-factory](solana-projects/solana-nft-factory/README.md)                | **Digital Assets / NFT Tooling** | Multi-flow NFT minting pipelines, metadata, and collection verification. |
-| [solana-log-lab](solana-projects/solana-log-lab/README.md)                        | **Dev Tooling / Lab**            | Advanced runtime logging, event emission, and program diagnostics.       |
+| [solana-log-lab](solana-projects/solana-log-lab/README.md)                        | **Dev Tooling / Lab**            | Exploration of runtime logging, event emission, and program diagnostics. |
 | [solana-price-oracle](solana-projects/solana-price-oracle/README.md)              | **Infrastructure / Oracle**      | Integration with Pyth Network using the pull-based oracle model.         |
 | [solana-wallet-analyzer](solana-projects/solana-wallet-analyzer/README.md)        | **Data Tooling / Analytics**     | Off-chain TypeScript tool for wallet indexing and data enrichment.       |
 | ⭐ [solana-employee-rewards](solana-projects/solana-employee-rewards/README.md)   | **Enterprise Web3 / dApp**       | Full-scale rewards system with annual cycles, treasury, and NFT badges.  |
