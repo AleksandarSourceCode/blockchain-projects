@@ -50,11 +50,13 @@ async function cleanup() {
 
       console.log("✅ Closed:", verifiedMessagePda.toBase58());
     } catch (e: any) {
+      const code =
+        e?.error?.errorCode?.number || e?.error?.InstructionError?.[1]?.Custom;
       const msg = e?.error?.errorMessage || e.toString();
 
       if (
+        code === 6004 || // InstructionDisabled (test-mode)
         msg.includes("Verified message already exists") ||
-        msg.includes("Instruction is disabled outside of test builds") ||
         msg.includes("Account does not exist")
       ) {
         console.log("close skipped (expected):", verifiedMessagePda.toBase58());
