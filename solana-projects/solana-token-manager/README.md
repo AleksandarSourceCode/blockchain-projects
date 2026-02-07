@@ -4,10 +4,10 @@
 
 A Solana on-chain program built with **Anchor**  
 that compares and demonstrates the practical differences  
-between **SPL Token** and **Token-2022** standards.  
+between **SPL Token** and **Token-2022** standards.
 
 The project focuses on instruction design, authority management,  
-and metadata handling across both token programs.  
+and metadata handling across both token programs.
 
 ---
 
@@ -67,6 +67,12 @@ programs/solana-token-manager/
 
 ## Usage
 
+Install dependencies:
+
+```bash
+npm install
+```
+
 Run program tests using Anchor:
 
 ```bash
@@ -87,11 +93,11 @@ anchor test
 ## Notes
 
 - The program operates directly on token and metadata accounts  
-  and does not introduce custom program-owned PDAs.  
+  and does not introduce custom program-owned PDAs.
 - Universal authority instructions require both mint and token accounts  
   due to Anchor account deserialization requirements,  
-  even when only one is modified.  
+  even when only one is modified.
 - Token-2022 metadata is stored directly in the mint account  
-  via the metadata pointer extension.  
+  via the metadata pointer extension.
 - The project prioritizes clarity and explicit behavior  
-  over abstraction.  
+  over abstraction.

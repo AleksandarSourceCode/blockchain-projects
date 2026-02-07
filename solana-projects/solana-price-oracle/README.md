@@ -3,10 +3,10 @@
 ## Description
 
 A Solana on-chain program built with **Anchor**  
-that reads verified price data from **Pyth** using the pull model.  
+that reads verified price data from **Pyth** using the pull model.
 
 The program supports both single-feed and batch price reads,  
-and emits structured events for off-chain use.  
+and emits structured events for off-chain use.
 
 ---
 
@@ -46,6 +46,12 @@ programs/solana-price-oracle/
 ---
 
 ## Usage
+
+Install dependencies:
+
+```bash
+npm install
+```
 
 Run program tests using Anchor:
 

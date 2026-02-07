@@ -3,10 +3,10 @@
 ## Description
 
 A lightweight off-chain **educational and portfolio tool**  
-for analyzing a Solana wallet using on-chain data and public APIs.  
+for analyzing a Solana wallet using on-chain data and public APIs.
 
 The analyzer focuses on structured data collection, enrichment,  
-and summarization rather than building a production service.  
+and summarization rather than building a production service.
 
 ---
 
@@ -64,15 +64,45 @@ Each step produces structured JSON output that can be reused or inspected indepe
 
 ## Usage
 
-Install dependencies and run the analyzer:
+### 1. Create API configuration
+
+Create a file:
+
+```
+src/keys.ts
+```
+
+Add your API keys:
+
+```ts
+export const BIRDEYE_API_KEY = "YOUR_BIRDEYE_API_KEY";
+export const HELIUS_API_KEY = "YOUR_HELIUS_API_KEY";
+export const JUPITER_API_KEY = "YOUR_JUPITER_API_KEY";
+```
+
+### 2. Set wallet address
+
+Open the file:
+
+```
+src/constants.ts
+```
+
+Set the wallet address:
+
+```ts
+export const WALLET_ADDRESS = "YOUR_WALLET_ADDRESS";
+```
+
+### 3. Install dependencies and run the analyzer
 
 ```bash
 npm install
 npm run start
 ```
 
-The execution flow is defined in `src/index.ts`.
-Individual pipeline steps can be enabled or disabled directly in that file.
+> The execution flow is defined in `src/index.ts`.
+> Individual pipeline steps can be enabled or disabled directly in that file.
 
 ---
 
@@ -88,15 +118,15 @@ Individual pipeline steps can be enabled or disabled directly in that file.
 ## Notes
 
 - The wallet address to analyze must be provided by the user  
-  by updating the `WALLET_ADDRESS` constant.  
+  by updating the `WALLET_ADDRESS` constant.
 - API keys are required for Birdeye (https://birdeye.so)  
   and Helius (https://helius.dev)  
-  and are provided via a local `keys.ts` file (not committed).  
+  and are provided via a local `keys.ts` file (not committed).
 - Birdeye and RPC endpoints are rate-limited;  
-  retry logic is built in.  
+  retry logic is built in.
 - NFT detection uses a simple heuristic  
-  (`amount === 1`, `decimals === 0`).  
+  (`amount === 1`, `decimals === 0`).
 - Token-2022 metadata is supported only when stored  
-  via the metadata pointer extension.  
+  via the metadata pointer extension.
 - The tool is not optimized for very large wallets  
-  and is intended for educational use.  
+  and is intended for educational use.

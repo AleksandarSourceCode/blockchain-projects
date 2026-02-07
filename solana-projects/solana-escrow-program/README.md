@@ -3,10 +3,10 @@
 ## Description
 
 A Solana on-chain program built with **Anchor**  
-that implements a simple, atomic token swap mechanism between two users.  
+that implements a simple, atomic token swap mechanism between two users.
 
 It demonstrates escrow-style swaps using PDAs and vault accounts,  
-without maintaining complex on-chain state.  
+without maintaining complex on-chain state.
 
 ---
 
@@ -38,14 +38,20 @@ programs/solana-escrow-program/
 
 ## Instructions / API
 
-| Instruction  | Description                                                  |
-| ------------ | ------------------------------------------------------------ |
-| `make_offer` | Create a new escrow offer and lock tokens into a vault       |
-| `take_offer` | Accept an offer and swap tokens atomically                   |
+| Instruction  | Description                                            |
+| ------------ | ------------------------------------------------------ |
+| `make_offer` | Create a new escrow offer and lock tokens into a vault |
+| `take_offer` | Accept an offer and swap tokens atomically             |
 
 ---
 
 ## Usage
+
+Install dependencies:
+
+```bash
+npm install
+```
 
 Run program tests using Anchor:
 

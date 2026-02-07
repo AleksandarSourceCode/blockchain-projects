@@ -43,7 +43,13 @@ E2E tests focus on integration correctness and avoid duplicating domain-level ed
 
 ## Running Tests
 
-Ensure project dependencies are installed before running tests.
+Install project dependencies:
+
+```bash
+npm install
+```
+
+Run tests:
 
 ```
 anchor test

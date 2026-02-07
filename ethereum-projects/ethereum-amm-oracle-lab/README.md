@@ -129,6 +129,20 @@ The project uses a **layered testing approach**, combining:
 Tests are deterministic, isolated, and focused on economic correctness  
 and realistic execution flows.
 
+### Running Tests
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run Hardhat tests:
+
+```bash
+npx hardhat test
+```
+
 ---
 
 ## Notes

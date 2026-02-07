@@ -3,10 +3,10 @@
 ## Description
 
 A Solana on-chain program built with **Anchor**  
-for managing global and user-specific configuration accounts.  
+for managing global and user-specific configuration accounts.
 
-It demonstrates deterministic PDA design, explicit access control,    
-and safe account management patterns.  
+It demonstrates deterministic PDA design, explicit access control,  
+and safe account management patterns.
 
 ---
 
@@ -45,17 +45,23 @@ programs/solana-config-program/
 
 ## Instructions / API
 
-| Instruction            | Description                                              |
-| ---------------------- | -------------------------------------------------------- |
-| `initialize_global`    | Initialize the global configuration (admin only)         |
-| `update_global`        | Update global configuration parameters (admin only)      |
-| `freeze_global`        | Freeze the global configuration state (admin only)       |
-| `update_user_by_admin` | Update a user's configuration (admin only)               |
-| `initialize_user`      | Initialize a user-specific configuration account (PDA)   |
+| Instruction            | Description                                            |
+| ---------------------- | ------------------------------------------------------ |
+| `initialize_global`    | Initialize the global configuration (admin only)       |
+| `update_global`        | Update global configuration parameters (admin only)    |
+| `freeze_global`        | Freeze the global configuration state (admin only)     |
+| `update_user_by_admin` | Update a user's configuration (admin only)             |
+| `initialize_user`      | Initialize a user-specific configuration account (PDA) |
 
 ---
 
 ## Usage
+
+Install dependencies:
+
+```bash
+npm install
+```
 
 Run program tests using Anchor:
 

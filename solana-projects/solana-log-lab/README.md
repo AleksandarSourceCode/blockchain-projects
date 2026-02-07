@@ -3,10 +3,10 @@
 ## Description
 
 A Solana on-chain program built with **Anchor**  
-that demonstrates the main logging patterns available on Solana.  
+that demonstrates the main logging patterns available on Solana.
 
 The project focuses on how logs are produced at runtime  
-and how they can be reliably tested and inspected.  
+and how they can be reliably tested and inspected.
 
 ---
 
@@ -45,17 +45,23 @@ programs/solana-log-lab/
 
 ## Instructions / API
 
-| Instruction   | Description                                             |
-| ------------- | ------------------------------------------------------- |
-| `log_plain`   | Emits plain runtime logs using `msg!`                   |
-| `log_event`   | Emits a structured Anchor event via `emit!`             |
-| `log_error`   | Emits logs by intentionally triggering an Anchor error  |
-| `log_cpi`     | Produces runtime logs via a CPI call                    |
-| `log_state`   | Writes a persistent log entry into program state        |
+| Instruction | Description                                            |
+| ----------- | ------------------------------------------------------ |
+| `log_plain` | Emits plain runtime logs using `msg!`                  |
+| `log_event` | Emits a structured Anchor event via `emit!`            |
+| `log_error` | Emits logs by intentionally triggering an Anchor error |
+| `log_cpi`   | Produces runtime logs via a CPI call                   |
+| `log_state` | Writes a persistent log entry into program state       |
 
 ---
 
 ## Usage
+
+Install dependencies:
+
+```bash
+npm install
+```
 
 Run program tests using Anchor:
 

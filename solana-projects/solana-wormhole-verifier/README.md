@@ -171,7 +171,13 @@ npm install
 ### Build Program
 
 ```bash
-anchor build
+anchor build -- --features test-mode
+```
+
+### Deploy Program (Devnet)
+
+```bash
+anchor deploy
 ```
 
 ### Run Full E2E Flow (Devnet)

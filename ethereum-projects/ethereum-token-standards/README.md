@@ -161,6 +161,20 @@ Deployment scripts are provided **only** for OpenZeppelin contracts.
 - validate events, state transitions, and access control
 - use Hardhat + Ethers v6
 
+### Running Tests
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run Hardhat tests:
+
+```bash
+npx hardhat test
+```
+
 ---
 
 ## Deployment
