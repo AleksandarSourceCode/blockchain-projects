@@ -46,23 +46,23 @@ async function cleanup() {
           payer: provider.publicKey,
           verifiedMessage: verifiedMessagePda,
         })
-        .rpc({ skipPreflight: true });
+        .rpc();
 
       console.log("✅ Closed:", verifiedMessagePda.toBase58());
     } catch (e: any) {
-      const code =
-        e?.error?.errorCode?.number || e?.error?.InstructionError?.[1]?.Custom;
-      const msg = e?.error?.errorMessage || e.toString();
+      const errorCode = e.code || e.error?.errorCode?.number;
+      const msg = e.message || "";
 
-      if (
-        code === 6004 || // InstructionDisabled (test-mode)
-        msg.includes("Verified message already exists") ||
-        msg.includes("Account does not exist")
-      ) {
-        console.log("close skipped (expected):", verifiedMessagePda.toBase58());
-      } else {
-        throw e;
+      // Custom errors start at 6000; since 'InstructionDisabled' is the 5th error
+      if (errorCode === 6004 || msg.includes("Account does not exist")) {
+        console.log(
+          "ℹ️ Close skipped (expected):",
+          verifiedMessagePda.toBase58(),
+        );
+        continue;
       }
+
+      throw e;
     }
   }
   console.log("🧹 Cleanup finished.");
